@@ -1,0 +1,49 @@
+
+# Env
+**/*.env
+
+# SSL
+**/*.pem
+**/*.crt
+**/*.key
+
+# Builds
+**/build/*
+**/dist/*
+
+# Logs
+**/log
+**/*.log
+**/npm-debug.log*
+**/yarn-debug.log*
+**/yarn-error.log*
+
+# coverage
+**/*.lcov
+**/coverage
+
+# Dependencies
+**/node_modules/
+
+# vscode
+**/.vscode/*
+**/*.code-workspace.json
+!**/.vscode/tasks.json
+!**/.vscode/launch.json
+!**/.vscode/settings.json
+!**/.vscode/extensions.json
+
+# eslint
+.eslintcache
+
+# yarn
+**/.yarn/*
+**/.yarn-integrity
+!**/.yarn/cache
+!**/.yarn/releases
+!**/.yarn/plugins
+!**/.yarn/sdks
+!**/.yarn/versions
+
+# zsh
+**/*zcompdump*
