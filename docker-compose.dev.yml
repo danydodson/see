@@ -8,7 +8,7 @@ services:
     restart: always
     image: danydodson/nginx-proxy
     ports:
-      - 80:8081
+      - 8081:80
     volumes:
       - './nginx-proxy/data:/etc/nginx'
       - './nginx-proxy/lua:/usr/local/openresty/nginx/lua'
@@ -34,7 +34,7 @@ services:
     ports:
       - 3000:3000
     environment:
-      - NODE_ENV=${NODE_ENV}
+      - NODE_ENV=development
       - CHOKIDAR_USEPOLLING=true
       - REACT_APP_API_URL=http://localhost:8081
     stdin_open: true
@@ -56,18 +56,14 @@ services:
       - './users-service:/usr/src/app'
       - 'users-nm:/usr/src/app/node_modules'
     environment:
-      NODE_ENV: ${NODE_ENV}
-    ports:
-      - 3100:3100
-      - 9229:9229
-    command: npm run debug
+      NODE_ENV: development
     networks:
       - back-tier
 
   fluentd:
     build: ./fluentd
-    links:
-      - elasticsearch
+    # links:
+    #   - elasticsearch
     volumes:
       - ./fluentd/conf:/fluentd/etc
     ports:
@@ -89,8 +85,8 @@ services:
 
   kibana:
     image: kibana:7.2.0
-    links:
-      - elasticsearch
+    # links:
+    #   - elasticsearch
     ports:
       - 5601:5601
     networks:

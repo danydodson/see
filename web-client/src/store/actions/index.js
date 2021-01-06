@@ -8,6 +8,7 @@ const theme = {
   },
 }
 
+
 const sw = {
   handleSuccess({ state }) {
     state.sw.isInitialized = true

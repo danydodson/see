@@ -1,10 +1,8 @@
 #!make
-
 export STAGE=dev
 export TAG?=latest
 export DOCKER_BUILDKIT=1
 export COMPOSE_DOCKER_CLI_BUILD=1
-export NODE_ENV=development
 export REPO?=$(shell basename ${PWD})
 
 # --------------------------------------------------------
@@ -36,5 +34,5 @@ stop:
 # 
 .PHONY: clean
 clean:
-	@docker-compose -f docker-compose.${STAGE}.yml down --rmi all -v --remove-orphans
+	@docker-compose -f docker-compose.${STAGE}.yml down -v --remove-orphans
 	@docker builder prune --force --filter type=exec.cachemount --filter=unused-for=24h
