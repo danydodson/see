@@ -1,0 +1,36 @@
+.header {
+  display: flex;
+  min-height: 100px;
+}
+
+.title {
+  font-size: var(--font-size-large);
+}
+
+.logo {
+  margin-right: 12px;
+}
+
+.nav {
+  list-style: none;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.nav > * {
+  font-size: var(--font-size-normal);
+  font-weight: 600;
+  margin-left: 40px;
+}
+
+@media only screen and (max-width: 768px) {
+  .title {
+    text-align: center;
+  }
+
+  .nav {
+    display: flex;
+    justify-content: space-evenly;
+  }
+}

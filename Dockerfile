@@ -8,6 +8,11 @@ RUN yarn build
 
 # 
 FROM openresty/openresty:alpine-fat
+LABEL "com.datadoghq.ad.check_names"='["nginx"]'
+LABEL "com.datadoghq.ad.init_configs"='[{}]'
+LABEL "com.datadoghq.ad.instances"='[{"nginx_status_url": "http://%%host%%:%%port%%/nginx_status"}]'
+LABEL "com.datadoghq.ad.logs"='[{"source": "nginx", "service": "webapp"}]'
+
 RUN apk add --no-cache git && rm -rf /etc/nginx/* && mkdir -p /var/log/nginx
 COPY nginx-proxy/data/* /etc/nginx/
 COPY nginx-proxy/lua/* /usr/local/openresty/nginx/lua/

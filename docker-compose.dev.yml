@@ -1,29 +1,30 @@
 version: '3.8'
-
 services:
+
   nginx-proxy:
     build:
       context: ./nginx-proxy
       dockerfile: Dockerfile
     restart: always
     image: danydodson/nginx-proxy
-    ports:
-      - 8081:80
+    expose:
+      - 8080
     volumes:
-      - './nginx-proxy/data:/etc/nginx'
-      - './nginx-proxy/lua:/usr/local/openresty/nginx/lua'
+      - ./nginx-proxy/data:/etc/nginx
+      - ./nginx-proxy/lua:/usr/local/openresty/nginx/lua
     networks:
-      - front-tier
-      - back-tier
+      - front
+      - back
     depends_on:
+      - dd-agent
       - users-service
     links:
-      - fluentd
-    logging:
-      driver: fluentd
-      options:
-        fluentd-address: 127.0.0.1:24224
-        tag: nginx.access
+      - dd-agent:dd-agent
+    labels:
+      com.datadoghq.ad.check_names: '["nginx"]'
+      com.datadoghq.ad.init_configs: '[{}]'
+      com.datadoghq.ad.instances: '[{"nginx_status_url": "http://%%host%%:81/nginx_status"}]'
+      com.datadoghq.ad.logs: '[{"source": "nginx", "service": "web"}]'
 
   web-client:
     build:
@@ -36,13 +37,13 @@ services:
     environment:
       - NODE_ENV=development
       - CHOKIDAR_USEPOLLING=true
-      - REACT_APP_API_URL=http://localhost:8081
+      - REACT_APP_API_URL=http://localhost:8080
     stdin_open: true
     volumes:
-      - './web-client:/usr/src/app'
-      - 'pwa-nm:/usr/src/app/node_modules'
+      - ./web-client:/usr/src/app
+      - web-vol:/usr/src/app/node_modules
     networks:
-      - front-tier
+      - front
     depends_on:
       - users-service
 
@@ -52,50 +53,42 @@ services:
       dockerfile: Dockerfile
     restart: always
     image: danydodson/users-service
-    volumes:
-      - './users-service:/usr/src/app'
-      - 'users-nm:/usr/src/app/node_modules'
     environment:
       NODE_ENV: development
-    networks:
-      - back-tier
-
-  fluentd:
-    build: ./fluentd
-    # links:
-    #   - elasticsearch
     volumes:
-      - ./fluentd/conf:/fluentd/etc
-    ports:
-      - 24224:24224
-      - 24224:24224/udp
-    networks:
-      - back-tier
-
-  elasticsearch:
-    image: docker.elastic.co/elasticsearch/elasticsearch:7.2.0
-    environment:
-      - 'discovery.type=single-node'
+      - ./users-service:/usr/src/app
+      - users-vol:/usr/src/app/node_modules
     expose:
-      - 9200
-    ports:
-      - 9200:9200
+      - 3100
+    # ports:
+    #   - 3100:3100
+    #   - 9229:9229
+    # command: npm run debug
     networks:
-      - back-tier
+      - back
 
-  kibana:
-    image: kibana:7.2.0
-    # links:
-    #   - elasticsearch
+  dd-agent:
+    container_name: dd-agent
+    image: datadog/agent:7
+    environment:
+      - DD_API_KEY=0fb37faa359b18572dc455052938f82b
+      - DD_APM_ENABLED=true
+      - DD_LOGS_ENABLED=true
+      - DD_LOGS_CONFIG_CONTAINER_COLLECT_ALL=true
+      - DD_AC_EXCLUDE="name:dd-agent"
+      - DD_PROCESS_AGENT_ENABLED=true
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /proc/:/host/proc/:ro
+      - /etc/passwd:/etc/passwd:ro
+      - /sys/fs/cgroup:/host/sys/fs/cgroup:ro
     ports:
-      - 5601:5601
-    networks:
-      - back-tier
+      - '8126:8126/tcp'
 
 networks:
-  front-tier:
-  back-tier:
+  back:
+  front:
 
 volumes:
-  pwa-nm: null
-  users-nm: null
+  web-vol: null
+  users-vol: null

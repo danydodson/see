@@ -1,16 +1,15 @@
 FROM node:12.18-alpine
 
-RUN mkdir -p /usr/src/app/node_modules && \
-  chown -R node:node /usr/src/app
+ARG DATABASE_TYPE
 
-WORKDIR /usr/src/app
+ENV DATABASE_URL "postgresql://umami:umami@db:5432/umami" \
+    DATABASE_TYPE=$DATABASE_TYPE
 
-COPY ["package.json", "yarn.lock", "./"]
+COPY . /app
+WORKDIR /app
 
-RUN yarn --pure-lockfile --silent
-
-COPY . .
+RUN npm install && npm run build
 
 EXPOSE 3000
 
-CMD ["yarn", "run", "docker"]
+CMD ["npm", "start"]
