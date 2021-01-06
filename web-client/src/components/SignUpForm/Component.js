@@ -1,13 +1,23 @@
 import React, { useState } from 'react'
+import TextField from '../TextField'
 
-const AddUserForm = ({ addUser }) => {
+
+import useStyles from './styles'
+
+
+
+function SignupForm({ addUser }) {
+  const classes = useStyles()
+
   const initialFormState = {
     firstname: '',
     lastname: '',
     email: '',
     username: '',
-    password: ''
+    password: '',
+    count: 0,
   }
+
   const [user, setUser] = useState(initialFormState)
 
   const handleInputChange = (event) => {
@@ -16,25 +26,28 @@ const AddUserForm = ({ addUser }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault()
-    const { firstname, lastname, email, username, password } = user
-    if (!firstname || !lastname || !email || !username || !password) return
-
+    // console.log('Your favorite flavor is: ' + this.state.value)
+    const { firstname, lastname, email, username, password, count } = user
+    if (!firstname || !lastname || !email || !username || !password, !count) return
     addUser(user)
     setUser(initialFormState)
+
   }
 
+
   return (
-    <form onSubmit={handleSubmit} className='add-user-form'>
+    <form onSubmit={handleSubmit} className={classes.root}>
       <label>First Name</label>
-      <input
+      <TextField
         type='text'
         name='firstname'
         value={user.firstname}
         onChange={handleInputChange}
       />
 
+
       <label>Last Name</label>
-      <input
+      <TextField
         type='text'
         name='lastname'
         value={user.lastname}
@@ -42,7 +55,7 @@ const AddUserForm = ({ addUser }) => {
       />
 
       <label>Email</label>
-      <input
+      <TextField
         type='email'
         name='email'
         value={user.email}
@@ -50,7 +63,7 @@ const AddUserForm = ({ addUser }) => {
       />
 
       <label>Username</label>
-      <input
+      <TextField
         type='username'
         name='username'
         value={user.username}
@@ -58,16 +71,18 @@ const AddUserForm = ({ addUser }) => {
       />
 
       <label>Password</label>
-      <input
+      <TextField
         type='password'
         name='password'
         value={user.password}
         onChange={handleInputChange}
       />
 
+
+
       <button>Add new user</button>
     </form>
   )
 }
 
-export default AddUserForm
+export default SignupForm

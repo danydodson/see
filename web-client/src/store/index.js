@@ -12,7 +12,8 @@ export const store = createOvermind({
   actions,
   effects,
 }, {
-  devtools: false,
+  devtools: true,
+  // devtools: false,
   logProxies: true,
   name: 'mainStore',
 })

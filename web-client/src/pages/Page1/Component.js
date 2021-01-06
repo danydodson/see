@@ -1,10 +1,8 @@
 import React from 'react'
 
 import Container from '@material-ui/core/Container'
-import Typography from '@material-ui/core/Typography'
 
-import AddUser from '../../components/Users'
-
+import SignupForm from '../../components/SignUpForm'
 import Meta from 'components/Meta'
 
 import useStyles from './styles'
@@ -19,8 +17,7 @@ function Page1() {
         description="Page 1"
       />
       <Container maxWidth="sm" className={classes.root}>
-        <AddUser></AddUser>
-        {/* <Typography variant="h3">Page 1</Typography> */}
+        <SignupForm className={classes.root}/>
       </Container>
     </>
   )

@@ -8,6 +8,13 @@ const initialState = {
     registration: null,
   },
   notifications: [],
+  // user: {
+  //   firstname: '',
+  //   lastname: '',
+  //   username: '',
+  //   email: '',
+  //   password: '',
+  // },
 }
 
 export { initialState }

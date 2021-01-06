@@ -2,6 +2,7 @@
 # Env
 **/*.env
 
+webstack-micro
 # SSL
 **/*.pem
 **/*.crt

@@ -6,6 +6,7 @@ import { useStore } from 'store';
 
 function Notifier() {
   const { state: { notifications }, actions } = useStore();
+  
   const { enqueueSnackbar, closeSnackbar } = useSnackbar();
   const displayed = useRef([]);
 
