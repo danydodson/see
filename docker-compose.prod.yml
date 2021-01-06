@@ -6,12 +6,12 @@ services:
       context: .
       dockerfile: Dockerfile
     restart: always
-    image: danydodson/nginx-proxy
+    image: ghcr.io/danydodson/nginx-proxy
     ports:
       - '80:8081'
-    volumes:
-      - './nginx-proxy/data:/etc/nginx'
-      - './nginx-proxy/lua:/usr/local/openresty/nginx/lua'
+    # volumes:
+    #   - './nginx-proxy/data:/etc/nginx'
+    #   - './nginx-proxy/lua:/usr/local/openresty/nginx/lua'
     networks:
       - back-tier
     depends_on:
@@ -22,16 +22,16 @@ services:
       context: ./users-service
       dockerfile: Dockerfile
     restart: always
-    image: danydodson/users-service
-    volumes:
-      - './users-service:/usr/src/app'
-      - 'users-nm:/usr/src/app/node_modules'
+    image: ghcr.io/danydodson/users-service
+    # volumes:
+    #   - './users-service:/usr/src/app'
+    #   - 'users-nm:/usr/src/app/node_modules'
     environment:
       NODE_ENV: development
     ports:
       - 3100:3100
-      - 9229:9229
-    command: npm run debug
+    #   - 9229:9229
+    # command: npm run debug
     networks:
       - back-tier
 

@@ -1,4 +1,4 @@
-import { asyncComponentLoader } from 'utils';
+import { asyncComponentLoader } from 'utils'
 
 const routes = [
   {
@@ -29,6 +29,6 @@ const routes = [
   {
     component: asyncComponentLoader(_ => import('components/NotFound')),
   },
-];
+]
 
-export default routes;
+export default routes

@@ -1,0 +1,46 @@
+version: '3.8'
+
+services:
+  nginx-proxy:
+    build:
+      context: ./nginx-proxy
+      dockerfile: Dockerfile
+    ports:
+      - 80:8081
+    networks:
+      - front-tier
+      - back-tier
+    depends_on:
+      - users-service
+
+  web-client:
+    build:
+      context: ./web-client
+      dockerfile: Dockerfile
+    ports:
+      - 3000:3000
+    environment:
+      - NODE_ENV=development
+      - CHOKIDAR_USEPOLLING=true
+      - REACT_APP_API_URL=http://localhost:8081
+    networks:
+      - front-tier
+    depends_on:
+      - users-service
+
+  users-service:
+    build:
+      context: ./users-service
+      dockerfile: Dockerfile
+    environment:
+      NODE_ENV: development
+    networks:
+      - back-tier
+
+networks:
+  front-tier:
+  back-tier:
+
+volumes:
+  pwa-nm: null
+  users-nm: null

@@ -17,6 +17,13 @@ services:
       - back-tier
     depends_on:
       - users-service
+    links:
+      - fluentd
+    logging:
+      driver: fluentd
+      options:
+        fluentd-address: 127.0.0.1:24224
+        tag: nginx.access
 
   web-client:
     build:
@@ -27,7 +34,7 @@ services:
     ports:
       - 3000:3000
     environment:
-      - NODE_ENV=development
+      - NODE_ENV=${NODE_ENV}
       - CHOKIDAR_USEPOLLING=true
       - REACT_APP_API_URL=http://localhost:8081
     stdin_open: true
@@ -49,11 +56,43 @@ services:
       - './users-service:/usr/src/app'
       - 'users-nm:/usr/src/app/node_modules'
     environment:
-      NODE_ENV: development
+      NODE_ENV: ${NODE_ENV}
     ports:
       - 3100:3100
       - 9229:9229
     command: npm run debug
+    networks:
+      - back-tier
+
+  fluentd:
+    build: ./fluentd
+    links:
+      - elasticsearch
+    volumes:
+      - ./fluentd/conf:/fluentd/etc
+    ports:
+      - 24224:24224
+      - 24224:24224/udp
+    networks:
+      - back-tier
+
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.2.0
+    environment:
+      - 'discovery.type=single-node'
+    expose:
+      - 9200
+    ports:
+      - 9200:9200
+    networks:
+      - back-tier
+
+  kibana:
+    image: kibana:7.2.0
+    links:
+      - elasticsearch
+    ports:
+      - 5601:5601
     networks:
       - back-tier
 

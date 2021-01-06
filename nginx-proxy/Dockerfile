@@ -17,6 +17,6 @@ RUN /usr/local/openresty/luajit/bin/luarocks install luajson
 RUN ln -sf /dev/stdout /var/log/nginx/access.log
 RUN ln -sf /dev/stdout /var/log/nginx/error.log
 
-EXPOSE 8081
+EXPOSE 80
 
 ENTRYPOINT ["/usr/local/openresty/bin/openresty", "-g", "daemon off;", "-c", "/etc/nginx/nginx.conf"]
