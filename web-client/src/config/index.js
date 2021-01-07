@@ -5,7 +5,7 @@ const email = 'danydodson@gmail.com';
 const domain = 'seesee.space'
 /* ***************** */
 
-const repository = 'https://github.com/danydodsonm/seesee-pwa';
+const repository = 'https://github.com/danydodson/nonce';
 
 const messages = {
   app: {

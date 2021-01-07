@@ -24,15 +24,20 @@ const SingupForm = () => (
     </h1>
 
     <Formik
+
       initialValues={{ email: "" }}
+
       onSubmit={async (values) => {
         await new Promise((resolve) => setTimeout(resolve, 500))
         alert(JSON.stringify(values, null, 2))
       }}
+
       validationSchema={Yup.object().shape({
         email: Yup.string().email().required("Required")
       })}
+
     >
+
       {(props) => {
         const {
           values,

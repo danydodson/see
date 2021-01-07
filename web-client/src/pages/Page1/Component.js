@@ -1,6 +1,6 @@
 import React from 'react'
 import Container from '@material-ui/core/Container'
-import SignupCtrl from '../../components/SingupForm'
+import SignupCtrl from '../../components/Auth'
 import Meta from 'components/Meta'
 import useStyles from './styles'
 
