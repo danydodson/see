@@ -1,10 +1,10 @@
 import React from 'react'
 import { TextField } from '@material-ui/core'
+// 
+import useStyles from './styles'
 
-// import useStyles from './styles'
-
-function FormTextField({ name, register, errors, ...props }) {
-  // const classes = useStyles()
+function TxtField({ name, register, errors, ...props }) {
+  const classes = useStyles()
 
   const errorMessage = errors && errors[name] && errors[name].message
 
@@ -20,4 +20,4 @@ function FormTextField({ name, register, errors, ...props }) {
 
 }
 
-export default FormTextField
+export default TxtField

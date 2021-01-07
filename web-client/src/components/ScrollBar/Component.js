@@ -1,12 +1,12 @@
-import React from 'react';
+import React from 'react'
 
-import clsx from 'clsx';
-import { Scrollbars } from 'react-custom-scrollbars';
+import clsx from 'clsx'
+import { Scrollbars } from 'react-custom-scrollbars'
 
-import useStyles from './styles';
+import useStyles from './styles'
 
 function ScrollBar({ className, ...props }) {
-  const classes = useStyles();
+  const classes = useStyles()
 
   return (
     <Scrollbars
@@ -19,7 +19,7 @@ function ScrollBar({ className, ...props }) {
       {...props}
       className={clsx(classes.root, className)}
     />
-  );
+  )
 }
 
-export default ScrollBar;
+export default ScrollBar

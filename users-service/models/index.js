@@ -32,7 +32,7 @@ const UserSchema = mongoose.Schema({
     type: String
   },
   gender: {
-    type: String, default: 'na'
+    type: String, default: 'it', enum: ['She/Her/Hers/Herself', 'He/Him/His/Himself', 'They/Them/Theirs/Themself', 'Name/Name/Names/Namesself']
   },
   avatar: {
     type: String, default: imgurl[Math.floor(Math.random() * 11)]

@@ -1,0 +1,106 @@
+{
+  "name": "umami",
+  "version": "0.19.0",
+  "description": "A simple, fast, website analytics alternative to Google Analytics. ",
+  "author": "Mike Cao <mike@mikecao.com>",
+  "license": "MIT",
+  "homepage": "https://github.com/mikecao/umami",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mikecao/umami.git"
+  },
+  "scripts": {
+    "dev": "next dev",
+    "build": "npm-run-all build-tracker copy-db-schema build-db-client build-app",
+    "start": "next start",
+    "build-app": "next build",
+    "build-tracker": "rollup -c rollup.tracker.config.js",
+    "copy-db-schema": "node scripts/copy-db-schema.js",
+    "build-db-schema": "dotenv prisma introspect",
+    "build-db-client": "dotenv prisma generate",
+    "build-mysql-schema": "dotenv prisma introspect -- --schema=./prisma/schema.mysql.prisma",
+    "build-mysql-client": "dotenv prisma generate -- --schema=./prisma/schema.mysql.prisma",
+    "build-postgresql-schema": "dotenv prisma introspect -- --schema=./prisma/schema.postgresql.prisma",
+    "build-postgresql-client": "dotenv prisma generate -- --schema=./prisma/schema.postgresql.prisma"
+  },
+  "lint-staged": {
+    "**/*.js": [
+      "prettier --write",
+      "eslint"
+    ],
+    "**/*.css": [
+      "stylelint --fix",
+      "prettier --write",
+      "eslint"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "dependencies": {
+    "@prisma/client": "2.5.1",
+    "@reduxjs/toolkit": "^1.4.0",
+    "bcrypt": "^5.0.0",
+    "chart.js": "^2.9.3",
+    "classnames": "^2.2.6",
+    "cookie": "^0.4.1",
+    "cors": "^2.8.5",
+    "date-fns": "^2.16.0",
+    "date-fns-tz": "^1.0.10",
+    "detect-browser": "^5.1.1",
+    "dotenv": "^8.2.0",
+    "formik": "^2.1.5",
+    "geolite2-redist": "^1.0.7",
+    "is-localhost-ip": "^1.4.0",
+    "jose": "^1.28.0",
+    "maxmind": "^4.1.4",
+    "moment-timezone": "^0.5.31",
+    "next": "^9.5.2",
+    "promise-polyfill": "^8.1.3",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-redux": "^7.2.1",
+    "react-simple-maps": "^2.1.2",
+    "react-spring": "^8.0.27",
+    "react-tooltip": "^4.2.9",
+    "react-window": "^1.8.5",
+    "redux": "^4.0.5",
+    "redux-thunk": "^2.3.0",
+    "request-ip": "^2.1.3",
+    "thenby": "^1.3.4",
+    "tinycolor2": "^1.4.1",
+    "unfetch": "^4.1.0",
+    "uuid": "^8.3.0"
+  },
+  "devDependencies": {
+    "@prisma/cli": "2.5.1",
+    "@rollup/plugin-buble": "^0.21.3",
+    "@rollup/plugin-node-resolve": "^9.0.0",
+    "@rollup/plugin-replace": "^2.3.3",
+    "@svgr/webpack": "^5.4.0",
+    "cross-env": "^7.0.2",
+    "dotenv-cli": "^3.2.0",
+    "eslint": "^7.7.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-prettier": "^3.1.3",
+    "eslint-plugin-react": "^7.20.6",
+    "eslint-plugin-react-hooks": "^4.1.0",
+    "husky": "^4.2.5",
+    "lint-staged": "^10.2.13",
+    "npm-run-all": "^4.1.5",
+    "postcss-flexbugs-fixes": "^4.2.1",
+    "postcss-import": "^12.0.1",
+    "postcss-preset-env": "^6.7.0",
+    "prettier": "^2.1.1",
+    "prettier-eslint": "^11.0.0",
+    "rollup": "^2.26.6",
+    "rollup-plugin-hashbang": "^2.2.2",
+    "rollup-plugin-terser": "^7.0.0",
+    "stylelint": "^13.6.0",
+    "stylelint-config-css-modules": "^2.2.0",
+    "stylelint-config-prettier": "^8.0.1",
+    "stylelint-config-recommended": "^3.0.0"
+  }
+}

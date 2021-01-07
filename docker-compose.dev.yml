@@ -5,7 +5,6 @@ services:
     build:
       context: ./nginx-proxy
       dockerfile: Dockerfile
-    restart: always
     image: danydodson/nginx-proxy
     expose:
       - 8080
@@ -16,21 +15,12 @@ services:
       - front
       - back
     depends_on:
-      - dd-agent
       - users-service
-    links:
-      - dd-agent:dd-agent
-    labels:
-      com.datadoghq.ad.check_names: '["nginx"]'
-      com.datadoghq.ad.init_configs: '[{}]'
-      com.datadoghq.ad.instances: '[{"nginx_status_url": "http://%%host%%:81/nginx_status"}]'
-      com.datadoghq.ad.logs: '[{"source": "nginx", "service": "web"}]'
 
   web-client:
     build:
       context: ./web-client
       dockerfile: Dockerfile
-    restart: always
     image: danydodson/web-client
     ports:
       - 3000:3000
@@ -51,39 +41,14 @@ services:
     build:
       context: ./users-service
       dockerfile: Dockerfile
-    restart: always
     image: danydodson/users-service
-    environment:
-      NODE_ENV: development
     volumes:
       - ./users-service:/usr/src/app
       - users-vol:/usr/src/app/node_modules
     expose:
       - 3100
-    # ports:
-    #   - 3100:3100
-    #   - 9229:9229
-    # command: npm run debug
     networks:
       - back
-
-  dd-agent:
-    container_name: dd-agent
-    image: datadog/agent:7
-    environment:
-      - DD_API_KEY=0fb37faa359b18572dc455052938f82b
-      - DD_APM_ENABLED=true
-      - DD_LOGS_ENABLED=true
-      - DD_LOGS_CONFIG_CONTAINER_COLLECT_ALL=true
-      - DD_AC_EXCLUDE="name:dd-agent"
-      - DD_PROCESS_AGENT_ENABLED=true
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-      - /proc/:/host/proc/:ro
-      - /etc/passwd:/etc/passwd:ro
-      - /sys/fs/cgroup:/host/sys/fs/cgroup:ro
-    ports:
-      - '8126:8126/tcp'
 
 networks:
   back:
