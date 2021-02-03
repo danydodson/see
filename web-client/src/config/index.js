@@ -1,11 +1,11 @@
-import { isMobile } from 'utils';
+import { isMobile } from 'utils'
 
 /* set your data here */
-const email = 'danydodson@gmail.com';
-const domain = 'seesee.space'
+const email = 'danydodson@gmail.com'
+const domain = 'nonce.space'
 /* ***************** */
 
-const repository = 'https://github.com/danydodson/nonce';
+const repository = 'https://github.com/danydodson/nonce'
 
 const messages = {
   app: {
@@ -24,12 +24,12 @@ const messages = {
     failed: 'something went wrong during image loading :(',
   },
   404: 'Hey bro? What are you looking for?',
-};
+}
 
 const copyright = {
   title: 'copyright © ',
   link: domain,
-};
+}
 
 const themes = {
   light: {
@@ -63,15 +63,15 @@ const themes = {
       },
     },
   },
-};
+}
 
-const cancelationMessage = 'operation is manually canceled';
+const cancelationMessage = 'operation is manually canceled'
 
-const dateFormat = 'MMMM DD, YYYY';
+const dateFormat = 'MMMM DD, YYYY'
 
-const title = 'React PWA';
+const title = 'React PWA'
 
-const themePair = ['dark', 'light'];
+const themePair = ['dark', 'light']
 
 const notifications = {
   options: {
@@ -82,13 +82,13 @@ const notifications = {
     autoHideDuration: 3000,
   },
   maxSnack: isMobile ? 3 : 4,
-};
+}
 
 const loader = {
   // no more blinking in your app
   delay: 300, // if your asynchronous process is finished during 300 milliseconds you will not see the loader at all
   minimumLoading: 700, // but if it appears, it will stay for at least 700 milliseconds
-};
+}
 
 export {
   messages,
@@ -103,4 +103,4 @@ export {
   themePair,
   notifications,
   themes,
-};
+}

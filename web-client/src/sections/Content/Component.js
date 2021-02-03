@@ -1,22 +1,22 @@
-import React from 'react';
+import React from 'react'
 
-import Page from 'components/Page';
+import Page from 'components/Page'
 
 import {
   Switch,
   Route,
-} from 'react-router-dom';
+} from 'react-router-dom'
 
-import routes from 'routes';
+import routes from 'routes'
 
 function Content() {
   return (
     <Page>
       <Switch>
-        {routes.map(route => <Route {...route} key={route.path || '#'}/>)}
+        {routes.map(route => <Route {...route} key={route.path || '#'} />)}
       </Switch>
     </Page>
-  );
+  )
 }
 
-export default Content;
+export default Content

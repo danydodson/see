@@ -1,0 +1,6 @@
+.page {
+  padding: 0 30px;
+  background: var(--gray50);
+  height: 100%;
+  overflow: hidden;
+}

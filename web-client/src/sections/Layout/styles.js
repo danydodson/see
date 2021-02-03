@@ -1,10 +1,11 @@
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles'
 
 const useStyles = makeStyles(theme => ({
   spacer: theme.mixins.toolbar,
   wrapper: {
     flexGrow: 1,
-    height: '100vh',
+    // uncomment to hide scrollbar
+    // height: '100vh',
     overflow: 'hidden',
     position: 'relative',
   },
@@ -14,6 +15,6 @@ const useStyles = makeStyles(theme => ({
     'justify-content': 'space-between',
     height: `calc(100% - ${theme.mixins.toolbar.minHeight + 8}px)`,
   },
-}));
+}))
 
-export default useStyles;
+export default useStyles

@@ -9,8 +9,17 @@ import * as effects from './effects'
 
 
 export const store = createOvermind(
-  { state: { ...initialState }, actions, effects, },
-  { devtools: false, logProxies: true, name: 'mainStore', }
+  {
+    state: { ...initialState },
+    actions,
+    effects,
+  },
+  {
+    // devtools: 'localhost:3030',
+    devtools: true,
+    logProxies: true,
+    name: 'mainStore',
+  }
 )
 
 

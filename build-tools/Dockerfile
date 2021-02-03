@@ -18,7 +18,7 @@ COPY ./nginx.conf /etc/nginx/nginx.conf
 RUN chown -R www /var/tmp/nginx /var/lib/nginx /var/log/nginx /etc/nginx
 USER www
 WORKDIR /frontend-web
-EXPOSE 8080
+EXPOSE 9090
 
 
 FROM base AS dependencies
@@ -43,7 +43,7 @@ WORKDIR /frontend-web
 COPY --from=build_dist /frontend-web/dist /frontend-web/dist
 USER root
 COPY ./nginx.conf /etc/nginx/nginx.conf
-EXPOSE 8080
+EXPOSE 9090
 STOPSIGNAL SIGTERM
 CMD ["nginx", "-g", "daemon off;"]
 

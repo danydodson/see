@@ -8,6 +8,11 @@ const initialState = {
     registration: null,
   },
   notifications: [],
+  user: {
+    newUserModel: {},
+    isAuthenticating: false,
+    isAuthenticated: false,
+  }
 }
 
 export { initialState }

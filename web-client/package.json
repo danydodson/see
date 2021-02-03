@@ -2,7 +2,7 @@
   "name": "react-pwa",
   "version": "1.0.1",
   "private": true,
-  "proxy": "http://localhost:8080",
+  "proxy": "http://localhost:9090",
   "scripts": {
     "start": "react-scripts start",
     "docker": "react-scripts start",

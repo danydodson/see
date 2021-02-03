@@ -7,13 +7,14 @@ services:
       dockerfile: Dockerfile
     image: danydodson/nginx-proxy
     expose:
-      - 8080
+      - 9090
     volumes:
-      - ./nginx-proxy/data:/etc/nginx
-      - ./nginx-proxy/lua:/usr/local/openresty/nginx/lua
+      - './nginx-proxy/data:/etc/nginx'
+      - './nginx-proxy/lua:/usr/local/openresty/nginx/lua'
     networks:
-      - front
-      - back
+      - app-net
+      # - front
+      # - back
     depends_on:
       - users-service
 
@@ -27,13 +28,14 @@ services:
     environment:
       - NODE_ENV=development
       - CHOKIDAR_USEPOLLING=true
-      - REACT_APP_API_URL=http://localhost:8080
+      - REACT_APP_API_URL=http://0.0.0.0:9090
     stdin_open: true
     volumes:
-      - ./web-client:/usr/src/app
-      - web-vol:/usr/src/app/node_modules
+      - './web-client:/usr/src/app'
+      - 'web-vol:/usr/src/app/node_modules'
     networks:
-      - front
+      - app-net
+      # - front
     depends_on:
       - users-service
 
@@ -43,16 +45,18 @@ services:
       dockerfile: Dockerfile
     image: danydodson/users-service
     volumes:
-      - ./users-service:/usr/src/app
-      - users-vol:/usr/src/app/node_modules
+      - './users-service:/usr/src/app'
+      - 'users-vol:/usr/src/app/node_modules'
     expose:
       - 3100
     networks:
-      - back
+      - app-net
+      # - back
 
 networks:
-  back:
-  front:
+  app-net:
+  # back: null
+  # front: null
 
 volumes:
   web-vol: null

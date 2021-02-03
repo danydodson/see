@@ -17,5 +17,5 @@ RUN yarn run test
 
 # 
 FROM src as prod
-EXPOSE 3100
+# EXPOSE 3100
 CMD ["yarn", "start"]
