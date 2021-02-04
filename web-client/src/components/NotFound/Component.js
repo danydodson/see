@@ -11,12 +11,7 @@ function NotFound() {
   const classes = useStyles();
 
   return (
-    <Box
-      display="flex"
-      justifyContent="center"
-      alignItems="center"
-      height="100%"
-    >
+    <Box display="flex" justifyContent="center" alignItems="center" height="100%">
       <Typography variant="h4" className={classes.message}>
         404 Not Found - {messages[404]}
       </Typography>

@@ -13,7 +13,12 @@ function Copyright() {
 
   return (
     <Box pt={2} pb={2}>
-      <Typography className={classes.copyright} variant="body2" color="textSecondary" align="center">
+      <Typography
+        className={classes.copyright}
+        variant="body2"
+        color="textSecondary"
+        align="center"
+      >
         {copyright.title}
         <Link color="inherit" href={domain}>
           {copyright.link}

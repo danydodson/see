@@ -10,7 +10,7 @@ const useStyles = makeStyles(theme => ({
   wrapper: {
     display: 'flex',
     'user-select': 'none',
-    'align-items': ({ isSmallScreen }) => isSmallScreen ? 'center' : 'initial',
+    'align-items': ({ isSmallScreen }) => (isSmallScreen ? 'center' : 'initial'),
     'text-align': 'center',
   },
   icon: {

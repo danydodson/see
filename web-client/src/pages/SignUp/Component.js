@@ -1,36 +1,31 @@
-import React from 'react'
-import Container from '@material-ui/core/Container'
-import SignUpCtrl from '../../components/Auth'
-import Meta from 'components/Meta'
-import useStyles from './styles'
+import React from 'react';
+import Container from '@material-ui/core/Container';
+import SignUpCtrl from '../../components/Auth';
+import Meta from 'components/Meta';
+import useStyles from './styles';
 
 function SignUpPage() {
-  const classes = useStyles()
-
+  const classes = useStyles();
 
   return (
     <>
-      <Meta
-        title='Page 1'
-        description='Page 1'
-      />
+      <Meta title="Sign Up" description="User sign up page" />
 
-      <Container maxWidth='sm' className={classes.root}>
+      <Container maxWidth="sm" className={classes.root}>
         <SignUpCtrl
           className={classes.root}
           values={{
-            name: '',
+            firstname: '',
+            lastname: '',
             email: '',
             username: '',
             password: '',
-            password2: ''
+            password2: '',
           }}
         />
       </Container>
-
     </>
-  )
+  );
 }
 
-
-export default SignUpPage
+export default SignUpPage;

@@ -4,6 +4,8 @@
 
 # React-PWA
 
+# "post": "bredele/post",
+
 A minimal React PWA application as a Github template.
 
 ## Synopsis

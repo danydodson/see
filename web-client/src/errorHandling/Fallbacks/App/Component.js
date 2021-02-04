@@ -28,7 +28,9 @@ function AppErrorBoundaryFallback() {
           </div>
           <Typography component="h6">or</Typography>
           <div>
-            <Button onClick={resetApp}>{messages.app.crash.options.reset} <ResetIcon /></Button>
+            <Button onClick={resetApp}>
+              {messages.app.crash.options.reset} <ResetIcon />
+            </Button>
           </div>
         </div>
       </Paper>

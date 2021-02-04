@@ -12,9 +12,7 @@ function LoaderErrorBoundaryFallback() {
 
   return (
     <Box className={classes.root}>
-      <Typography variant="h5">
-        {messages.loader.fail}
-      </Typography>
+      <Typography variant="h5">{messages.loader.fail}</Typography>
     </Box>
   );
 }

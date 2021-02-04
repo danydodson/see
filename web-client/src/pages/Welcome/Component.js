@@ -17,17 +17,13 @@ function Welcome() {
 
   return (
     <>
-      <Meta
-        title="Welcome"
-        description="Welcome to React PWA"
-      />
+      <Meta title="Welcome" description="Welcome to React PWA" />
       <Container maxWidth="sm" className={classes.root}>
         <Box className={classes.wrapper}>
-          <Box className={classes.iconBox}><ReactIcon className={classes.icon} /></Box>
-          <Typography
-            variant={matchSmallScreen ? 'h4' : 'h3'}
-            className={classes.title}
-          >
+          <Box className={classes.iconBox}>
+            <ReactIcon className={classes.icon} />
+          </Box>
+          <Typography variant={matchSmallScreen ? 'h4' : 'h3'} className={classes.title}>
             React PWA
           </Typography>
         </Box>

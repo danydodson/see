@@ -44,7 +44,7 @@ function Meta({ description, lang, meta, title, image }) {
         },
       ].concat(meta)}
     />
-  )
+  );
 }
 
 Meta.defaultProps = {

@@ -12,10 +12,7 @@ function Page3() {
 
   return (
     <>
-      <Meta
-        title="Page 3"
-        description="Page 3"
-      />
+      <Meta title="Page 3" description="Page 3" />
       <Container maxWidth="sm" className={classes.root}>
         <Typography variant="h3">Page 3</Typography>
       </Container>

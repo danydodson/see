@@ -1,18 +1,18 @@
 const initialState = {
-  theme: {
-    mode: localStorage.getItem('theme-mode') || 'dark',
-  },
+  notifications: [],
   sw: {
     isInitialized: false,
     isUpdated: false,
     registration: null,
   },
-  notifications: [],
-  user: {
-    newUserModel: {},
-    isAuthenticating: false,
-    isAuthenticated: false,
-  }
-}
+  theme: {
+    mode: localStorage.getItem('theme-mode') || 'dark',
+  },
+  users: {},
+  currentUserId: null,
+  currentUser: id => {
+    return this.users[this.currentUserId];
+  },
+};
 
-export { initialState }
+export { initialState };
