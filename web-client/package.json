@@ -72,9 +72,7 @@
     ]
   },
   "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
+    "hooks": {}
   },
   "eslintConfig": {
     "extends": "react-app"
