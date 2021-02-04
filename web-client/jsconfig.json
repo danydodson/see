@@ -1,8 +1,18 @@
 {
   "compilerOptions": {
-    "baseUrl": "src"
+    "baseUrl": "src",
+    "module": "es2020",
+    "target": "es2020",
+    "types": [],
+    "typeRoots": [],
+    "experimentalDecorators": true,
+    "checkJs": true 
   },
   "include": [
-    "src"
+    "src/**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "build"
   ]
 }

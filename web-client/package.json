@@ -3,17 +3,15 @@
   "version": "1.0.1",
   "private": true,
   "proxy": "http://localhost:9090",
+  "main": "src/App.js",
   "scripts": {
     "start": "react-scripts start",
     "docker": "react-scripts start",
-    "build": "react-scripts build",
-    "build:2": "GENERATE_SOURCEMAP=false react-scripts build",
-    "start-prod": "yarn build && yarn serve",
-    "serve": "node hoster/server.js",
+    "prod": "yarn build && yarn serve",
     "lint": "eslint './src/**/*.{js,jsx}'",
     "lint:fix": "yarn run lint --fix",
-    "clean": "sudo rm -rf node_modules",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "GENERATE_SOURCEMAP=false react-scripts build",
+    "clean": "sudo rm -rf node_modules && sudo rm -rf build && sudo rm -rf yarn.lock"
   },
   "dependencies": {
     "@datadog/browser-rum": "^2.5.0",
@@ -62,6 +60,11 @@
     "stylelint-config-prettier": "^8.0.2",
     "stylelint-config-recommended": "^3.0.0"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
   "lint-staged": {
     "**/*.js": [
       "prettier --write",
@@ -72,14 +75,6 @@
       "prettier --write",
       "eslint"
     ]
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "eslintConfig": {
-    "extends": "react-app"
   },
   "browserslist": {
     "production": [

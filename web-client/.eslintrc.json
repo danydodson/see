@@ -1,15 +1,17 @@
 {
   "env": {
     "browser": true,
-    "es2020": true,
-    "node": true
+    "es2021": true,
+    "node": true,
+    "jest": true,
+    "mongo": true
   },
   "extends": [
-    "eslint:recommended",
     "react-app",
-    "plugin:react/recommended",
     "prettier",
-    "plugin:prettier/recommended"
+    "eslint:recommended",
+    "plugin:react/recommended"
+    // "plugin:prettier/recommended"
   ],
   "settings": {
     "react": {
@@ -17,24 +19,25 @@
     }
   },
   "parserOptions": {
+    "sourceType": "module",
+    "ecmaVersion": 11,
     "ecmaFeatures": {
       "jsx": true
-    },
-    "ecmaVersion": 11,
-    "sourceType": "module"
+    }
   },
   "plugins": [
-    "react"
+    "react",
+    "prettier"
   ],
   "rules": {
     "react/display-name": "off",
     "react/react-in-jsx-scope": "off",
     "react/prop-types": "off",
+    "semi": "off",
     "no-useless-concat": "off",
     "no-unused-vars": "off"
   },
   "globals": {
     "React": "writable"
   }
-  // "parser": "@typescript-eslint/parser"
 }

@@ -1,2 +1,4 @@
+build
+public
+node_modules
 ./jsconfig.json
-/public/

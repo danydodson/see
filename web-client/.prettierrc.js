@@ -3,5 +3,8 @@ module.exports = {
   semi: false,
   arrowParens: 'avoid',
   trailingComma: 'none',
-  singleQuote: true
+  singleQuote: true,
+  jsxSingleQuote: true,
+  bracketSpacing: true,
+  parser: 'espree'
 }
