@@ -1,24 +1,19 @@
-import React from 'react';
+import React from 'react'
 
-import Typography from '@material-ui/core/Typography';
-import Box from '@material-ui/core/Box';
-import Link from '@material-ui/core/Link';
+import Typography from '@material-ui/core/Typography'
+import Box from '@material-ui/core/Box'
+import Link from '@material-ui/core/Link'
 
-import { copyright, domain } from 'config';
+import { copyright, domain } from 'config'
 
-import useStyles from './styles';
+import useStyles from './styles'
 
 function Copyright() {
-  const classes = useStyles();
+  const classes = useStyles()
 
   return (
     <Box pt={2} pb={2}>
-      <Typography
-        className={classes.copyright}
-        variant="body2"
-        color="textSecondary"
-        align="center"
-      >
+      <Typography className={classes.copyright} variant="body2" color="textSecondary" align="center">
         {copyright.title}
         <Link color="inherit" href={domain}>
           {copyright.link}
@@ -26,7 +21,7 @@ function Copyright() {
         {new Date().getFullYear()}
       </Typography>
     </Box>
-  );
+  )
 }
 
-export default Copyright;
+export default Copyright

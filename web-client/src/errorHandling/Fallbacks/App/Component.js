@@ -1,18 +1,18 @@
-import React from 'react';
+import React from 'react'
 
-import Paper from '@material-ui/core/Paper';
-import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
+import Paper from '@material-ui/core/Paper'
+import Typography from '@material-ui/core/Typography'
+import Button from '@material-ui/core/Button'
 
-import { FaRedo as ResetIcon } from 'react-icons/fa';
+import { FaRedo as ResetIcon } from 'react-icons/fa'
 
-import { resetApp } from 'utils';
-import { messages, email } from 'config';
+import { resetApp } from 'utils'
+import { messages, email } from 'config'
 
-import useStyles from './styles';
+import useStyles from './styles'
 
 function AppErrorBoundaryFallback() {
-  const classes = useStyles();
+  const classes = useStyles()
 
   return (
     <div className={classes.wrapper}>
@@ -35,7 +35,7 @@ function AppErrorBoundaryFallback() {
         </div>
       </Paper>
     </div>
-  );
+  )
 }
 
-export default AppErrorBoundaryFallback;
+export default AppErrorBoundaryFallback

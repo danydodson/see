@@ -2,17 +2,7 @@ import React from 'react'
 
 import useStyles from './styles'
 
-export default function Button({
-  type = 'button',
-  icon,
-  size,
-  variant,
-  children,
-  className,
-  tooltip,
-  tooltipId,
-  ...props
-}) {
+export default function Button({ type = 'button', icon, size, variant, children, className, tooltip, tooltipId, ...props }) {
   return (
     <button
       data-tip={tooltip}

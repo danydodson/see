@@ -1,3 +1,3 @@
-import withErrorHandler from './withErrorHandler';
+import withErrorHandler from './withErrorHandler'
 
-export default withErrorHandler;
+export default withErrorHandler

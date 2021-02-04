@@ -8,13 +8,9 @@ import useStyles from './styles'
 function Link({ className, ...props }) {
   const classes = useStyles()
 
-  const Component = props.href
-    ? ({ children, ...props }) => <a {...props}>{children}</a>
-    : RouterLink
+  const Component = props.href ? ({ children, ...props }) => <a {...props}>{children}</a> : RouterLink
 
-  return (
-    <Component {...props} className={clsx(classes.root, className)} />
-  )
+  return <Component {...props} className={clsx(classes.root, className)} />
 }
 
 export default Link

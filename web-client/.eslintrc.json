@@ -6,10 +6,16 @@
   },
   "extends": [
     "eslint:recommended",
+    "react-app",
     "plugin:react/recommended",
     "prettier",
-    "prettier/react"
+    "plugin:prettier/recommended"
   ],
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
   "parserOptions": {
     "ecmaFeatures": {
       "jsx": true
@@ -24,9 +30,11 @@
     "react/display-name": "off",
     "react/react-in-jsx-scope": "off",
     "react/prop-types": "off",
+    "no-useless-concat": "off",
     "no-unused-vars": "off"
   },
   "globals": {
     "React": "writable"
   }
+  // "parser": "@typescript-eslint/parser"
 }

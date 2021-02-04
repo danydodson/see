@@ -6,12 +6,4 @@ import downloadFile from './downloadFile'
 import sleep from './sleep'
 import asyncComponentLoader from './asyncComponentLoader'
 
-export {
-  today,
-  noop,
-  isMobile,
-  resetApp,
-  downloadFile,
-  sleep,
-  asyncComponentLoader,
-}
+export { today, noop, isMobile, resetApp, downloadFile, sleep, asyncComponentLoader }

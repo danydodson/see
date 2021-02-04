@@ -1,14 +1,14 @@
-import React from 'react';
+import React from 'react'
 
-import Box from '@material-ui/core/Box';
-import Typography from '@material-ui/core/Typography';
+import Box from '@material-ui/core/Box'
+import Typography from '@material-ui/core/Typography'
 
-import { messages } from 'config';
+import { messages } from 'config'
 
-import useStyles from './styles';
+import useStyles from './styles'
 
 function NotFound() {
-  const classes = useStyles();
+  const classes = useStyles()
 
   return (
     <Box display="flex" justifyContent="center" alignItems="center" height="100%">
@@ -16,7 +16,7 @@ function NotFound() {
         404 Not Found - {messages[404]}
       </Typography>
     </Box>
-  );
+  )
 }
 
-export default NotFound;
+export default NotFound

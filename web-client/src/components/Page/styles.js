@@ -1,6 +1,6 @@
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles'
 
-import { isMobile } from 'utils';
+import { isMobile } from 'utils'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -8,8 +8,8 @@ const useStyles = makeStyles(theme => ({
     overflow: 'hidden',
     position: 'relative',
     'padding-left': theme.spacing(isMobile ? 1.5 : 3),
-    'padding-right': theme.spacing(isMobile ? 1.5 : 3),
-  },
-}));
+    'padding-right': theme.spacing(isMobile ? 1.5 : 3)
+  }
+}))
 
-export default useStyles;
+export default useStyles

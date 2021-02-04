@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 
 /* eslint-disable */
 export const FormikState = props => (
@@ -8,11 +8,11 @@ export const FormikState = props => (
       style={{
         background: '#f6f8fa',
         fontSize: '.65rem',
-        padding: '.5rem',
+        padding: '.5rem'
       }}
     >
       <strong>props</strong> = {JSON.stringify(props, null, 2)}
     </pre>
   </div>
-);
+)
 /* eslint-disable */

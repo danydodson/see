@@ -14,7 +14,7 @@ import {
   FaRegMoon as BrushIcon,
   FaRedo as RedoIcon,
   FaBars as MenuIcon,
-  FaGithub as GithubIcon,
+  FaGithub as GithubIcon
 } from 'react-icons/fa'
 
 import Link from 'components/Link'
@@ -27,9 +27,9 @@ import useStyles from './styles'
 const Divider = withStyles({
   root: {
     'margin-left': 7,
-    'margin-right': 7,
-  },
-})(props => <DividerMU flexItem orientation='vertical' {...props} />)
+    'margin-right': 7
+  }
+})(props => <DividerMU flexItem orientation="vertical" {...props} />)
 
 function AppBar_({ isMenuOpen, onMenuOpen }) {
   const classes = useStyles()
@@ -44,64 +44,43 @@ function AppBar_({ isMenuOpen, onMenuOpen }) {
   }
 
   return (
-    <AppBar
-      position='absolute'
-      className={classes.appBar}
-      color='transparent'
-      elevation={1}
-    >
+    <AppBar position="absolute" className={classes.appBar} color="transparent" elevation={1}>
       <Toolbar className={classes.toolbar}>
-        <Box display='flex' className={classes.main}>
-          <IconButton
-            edge='start'
-            aria-label='open menu'
-            onClick={onMenuOpen}
-          >
+        <Box display="flex" className={classes.main}>
+          <IconButton edge="start" aria-label="open menu" onClick={onMenuOpen}>
             <MenuIcon />
           </IconButton>
-          <Link to='/'>
-            <Button aria-label='go to home' className={classes.title}>
+          <Link to="/">
+            <Button aria-label="go to home" className={classes.title}>
               {title}
             </Button>
           </Link>
         </Box>
-        <Box display='flex'>
-          {
-            state.sw.isUpdated && (
-              <>
-                <Tooltip title='The application has newer version; press to update' arrow>
-                  <IconButton aria-label='update the application' color='secondary' onClick={handleAppUpdate}>
-                    <RedoIcon />
-                  </IconButton>
-                </Tooltip>
-                <Divider />
-              </>
-            )
-          }
-          <Tooltip title='Its open source' arrow>
-            <IconButton
-              aria-label='go to github page'
-              component='a'
-              target='_blank'
-              rel='noreferrer'
-              href={repository}
-            >
+        <Box display="flex">
+          {state.sw.isUpdated && (
+            <>
+              <Tooltip title="The application has newer version; press to update" arrow>
+                <IconButton aria-label="update the application" color="secondary" onClick={handleAppUpdate}>
+                  <RedoIcon />
+                </IconButton>
+              </Tooltip>
+              <Divider />
+            </>
+          )}
+          <Tooltip title="Its open source" arrow>
+            <IconButton aria-label="go to github page" component="a" target="_blank" rel="noreferrer" href={repository}>
               <GithubIcon />
             </IconButton>
           </Tooltip>
           <Divider />
-          <Tooltip title='Change theme' arrow>
-            <IconButton
-              aria-label='toggle theme'
-              edge='end'
-              onClick={handleToggleTheme}
-            >
+          <Tooltip title="Change theme" arrow>
+            <IconButton aria-label="toggle theme" edge="end" onClick={handleToggleTheme}>
               <BrushIcon />
             </IconButton>
           </Tooltip>
         </Box>
       </Toolbar>
-    </AppBar >
+    </AppBar>
   )
 }
 

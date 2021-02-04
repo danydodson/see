@@ -12,12 +12,9 @@ function LogInPage() {
 
   return (
     <>
-      <Meta
-        title='Log In Pagen'
-        description='User login page'
-      />
-      <Container maxWidth='sm' className={classes.root}>
-        <Typography variant='h3'>Log In</Typography>
+      <Meta title="Log In Pagen" description="User login page" />
+      <Container maxWidth="sm" className={classes.root}>
+        <Typography variant="h3">Log In</Typography>
       </Container>
     </>
   )

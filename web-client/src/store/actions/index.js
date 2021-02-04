@@ -5,7 +5,7 @@ const theme = {
     const mode = state.theme.mode === themePair[0] ? themePair[1] : themePair[0]
     state.theme.mode = mode
     effects.theme.lsSave(mode)
-  },
+  }
 }
 
 const sw = {
@@ -18,7 +18,7 @@ const sw = {
   },
   update({ effects, state }) {
     effects.sw.update()
-  },
+  }
 }
 
 const notifications = {
@@ -29,29 +29,18 @@ const notifications = {
       options: {
         ...notificationsDefoults.options,
         ...notification.options,
-        key: effects.genUUID(),
-      },
+        key: effects.genUUID()
+      }
     })
   },
 
   close({ state }, key, dismissAll = !key) {
-
-    state.notifications = state.notifications.map(
-      notification => (dismissAll || notification.options.key === key)
-        ? { ...notification, dismissed: true }
-        : { ...notification }
-    )
+    state.notifications = state.notifications.map(notification => (dismissAll || notification.options.key === key ? { ...notification, dismissed: true } : { ...notification }))
   },
 
   remove({ state }, key) {
-    state.notifications = state.notifications.filter(
-      notification => notification.options.key !== key,
-    )
-  },
+    state.notifications = state.notifications.filter(notification => notification.options.key !== key)
+  }
 }
 
-export {
-  theme,
-  sw,
-  notifications,
-}
+export { theme, sw, notifications }

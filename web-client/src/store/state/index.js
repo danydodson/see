@@ -3,16 +3,16 @@ const initialState = {
   sw: {
     isInitialized: false,
     isUpdated: false,
-    registration: null,
+    registration: null
   },
   theme: {
-    mode: localStorage.getItem('theme-mode') || 'dark',
+    mode: localStorage.getItem('theme-mode') || 'dark'
   },
   users: {},
   currentUserId: null,
   currentUser: id => {
-    return this.users[this.currentUserId];
-  },
-};
+    return this.users[this.currentUserId]
+  }
+}
 
-export { initialState };
+export { initialState }

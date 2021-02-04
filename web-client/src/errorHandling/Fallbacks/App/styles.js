@@ -1,21 +1,21 @@
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles'
 
 const useStyles = makeStyles(theme => ({
   wrapper: {
     height: '100%',
     display: 'flex',
     justifyContent: 'center',
-    alignItems: 'center',
+    alignItems: 'center'
   },
   paper: {
     padding: 40,
     '& h6': {
-      paddingLeft: 15,
-    },
+      paddingLeft: 15
+    }
   },
   buttons: {
-    marginTop: 30,
-  },
-}));
+    marginTop: 30
+  }
+}))
 
-export default useStyles;
+export default useStyles

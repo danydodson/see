@@ -1,14 +1,14 @@
-import React from 'react';
+import React from 'react'
 
-import Container from '@material-ui/core/Container';
-import Typography from '@material-ui/core/Typography';
+import Container from '@material-ui/core/Container'
+import Typography from '@material-ui/core/Typography'
 
-import Meta from 'components/Meta';
+import Meta from 'components/Meta'
 
-import useStyles from './styles';
+import useStyles from './styles'
 
 function Page4() {
-  const classes = useStyles();
+  const classes = useStyles()
 
   return (
     <>
@@ -17,7 +17,7 @@ function Page4() {
         <Typography variant="h3">Page 4</Typography>
       </Container>
     </>
-  );
+  )
 }
 
-export default Page4;
+export default Page4

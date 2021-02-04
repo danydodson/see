@@ -8,13 +8,11 @@ import { useStore } from 'store'
 import { themes } from 'config'
 
 function CustomThemeProvider({ children }) {
-  const { state: { theme } } = useStore()
+  const {
+    state: { theme }
+  } = useStore()
 
-  return (
-    <ThemeProvider theme={createMuiTheme(themes[theme.mode])}>
-      {children}
-    </ThemeProvider>
-  )
+  return <ThemeProvider theme={createMuiTheme(themes[theme.mode])}>{children}</ThemeProvider>
 }
 
 export default CustomThemeProvider

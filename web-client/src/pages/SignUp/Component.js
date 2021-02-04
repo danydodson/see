@@ -1,11 +1,11 @@
-import React from 'react';
-import Container from '@material-ui/core/Container';
-import SignUpCtrl from '../../components/Auth';
-import Meta from 'components/Meta';
-import useStyles from './styles';
+import React from 'react'
+import Container from '@material-ui/core/Container'
+import SignUpCtrl from '../../components/Auth'
+import Meta from 'components/Meta'
+import useStyles from './styles'
 
 function SignUpPage() {
-  const classes = useStyles();
+  const classes = useStyles()
 
   return (
     <>
@@ -20,12 +20,12 @@ function SignUpPage() {
             email: '',
             username: '',
             password: '',
-            password2: '',
+            password2: ''
           }}
         />
       </Container>
     </>
-  );
+  )
 }
 
-export default SignUpPage;
+export default SignUpPage

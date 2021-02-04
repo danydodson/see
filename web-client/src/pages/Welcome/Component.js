@@ -1,19 +1,19 @@
-import React from 'react';
+import React from 'react'
 
-import Container from '@material-ui/core/Container';
-import Typography from '@material-ui/core/Typography';
-import Box from '@material-ui/core/Box';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
+import Container from '@material-ui/core/Container'
+import Typography from '@material-ui/core/Typography'
+import Box from '@material-ui/core/Box'
+import useMediaQuery from '@material-ui/core/useMediaQuery'
 
-import { FaReact as ReactIcon } from 'react-icons/fa';
+import { FaReact as ReactIcon } from 'react-icons/fa'
 
-import Meta from 'components/Meta';
+import Meta from 'components/Meta'
 
-import useStyles from './styles';
+import useStyles from './styles'
 
 function Welcome() {
-  const matchSmallScreen = useMediaQuery('(max-width: 600px)');
-  const classes = useStyles({ isSmallScreen: matchSmallScreen });
+  const matchSmallScreen = useMediaQuery('(max-width: 600px)')
+  const classes = useStyles({ isSmallScreen: matchSmallScreen })
 
   return (
     <>
@@ -29,7 +29,7 @@ function Welcome() {
         </Box>
       </Container>
     </>
-  );
+  )
 }
 
-export default Welcome;
+export default Welcome
