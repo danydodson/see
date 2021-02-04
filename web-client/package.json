@@ -1,16 +1,18 @@
 {
   "name": "nonce-pwa",
+  "description": "nonce-pwa",
   "version": "1.0.1",
+  "proxy": "http://localhost:8080",
   "private": true,
-  "proxy": "http://localhost:9090",
-  "main": "src/App.js",
   "scripts": {
     "start": "react-scripts start",
     "docker": "react-scripts start",
+    "serve": "serve -s -n build",
     "prod": "yarn build && yarn serve",
+    "build": "GENERATE_SOURCEMAP=false react-scripts build",
     "lint": "eslint './src/**/*.{js,jsx}'",
     "lint:fix": "yarn run lint --fix",
-    "build": "GENERATE_SOURCEMAP=false react-scripts build",
+    "sitemap": "npx sitemap-generator-cli -f './public/sitemap.xml' https://nonce.herokuapp.com/",
     "clean": "sudo rm -rf node_modules && sudo rm -rf build && sudo rm -rf yarn.lock"
   },
   "dependencies": {

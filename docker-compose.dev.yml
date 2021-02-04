@@ -6,8 +6,8 @@ services:
       context: ./nginx-proxy
       dockerfile: Dockerfile
     image: danydodson/nginx-proxy
-    expose:
-      - 9090
+    ports:
+      - 8080:8080
     volumes:
       - './nginx-proxy/data:/etc/nginx'
       - './nginx-proxy/lua:/usr/local/openresty/nginx/lua'
@@ -28,7 +28,7 @@ services:
     environment:
       - NODE_ENV=development
       - CHOKIDAR_USEPOLLING=true
-      - REACT_APP_API_URL=http://0.0.0.0:9090
+      - REACT_APP_API_URL=http://0.0.0.0:8080
     stdin_open: true
     volumes:
       - './web-client:/usr/src/app'

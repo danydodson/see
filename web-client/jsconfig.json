@@ -3,16 +3,13 @@
     "baseUrl": "src",
     "module": "es2020",
     "target": "es2020",
-    "types": [],
-    "typeRoots": [],
-    "experimentalDecorators": true,
-    "checkJs": true 
+    "checkJs": true
   },
   "include": [
-    "src/**/*"
+    "src"
   ],
   "exclude": [
-    "node_modules",
-    "build"
+    "build",
+    "node_modules"
   ]
 }

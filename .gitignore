@@ -1,4 +1,5 @@
-web2client
+web-store
+web-overmind
 
 # Env
 **/*.env

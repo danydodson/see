@@ -3,7 +3,7 @@ local cjson = require 'cjson'
 local jwt = require 'resty.jwt'
 
 if ngx.req.get_method() ~= 'POST' then
-  ngx.say('googjob' + ngx.req.get_method())
+  -- ngx.say(ngx.req.get_method())
 elseif ngx.req.get_method() ~= 'GET' then
   -- get req body
   local data = ngx.req.get_body_data()

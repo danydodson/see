@@ -1,6 +1,5 @@
 build
 public
 node_modules
-./jsconfig.json
 src/registerServiceWorker.js
 src/**/__tests__/**
