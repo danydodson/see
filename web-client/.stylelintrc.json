@@ -9,9 +9,15 @@
     "selector-pseudo-class-no-unknown": [
       true,
       {
-        "ignorePseudoClasses": ["global", "horizontal", "vertical"]
+        "ignorePseudoClasses": [
+          "global",
+          "horizontal",
+          "vertical"
+        ]
       }
     ]
   },
-  "ignoreFiles": ["**/*.js"]
+  "ignoreFiles": [
+    "**/*.js"
+  ]
 }
