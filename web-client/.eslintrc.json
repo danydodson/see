@@ -8,10 +8,23 @@
   },
   "extends": [
     "react-app",
-    "prettier",
     "eslint:recommended",
     "plugin:react/recommended"
   ],
+  "plugins": [
+    "react"
+  ],
+  "globals": {
+    "React": "writable"
+  },
+  "rules": {
+    "react/display-name": "off",
+    "react/react-in-jsx-scope": "off",
+    "react/prop-types": "off",
+    "semi": "off",
+    "no-useless-concat": "off",
+    "no-unused-vars": "off"
+  },
   "settings": {
     "react": {
       "version": "detect"
@@ -23,20 +36,5 @@
     "ecmaFeatures": {
       "jsx": true
     }
-  },
-  "plugins": [
-    "react",
-    "prettier"
-  ],
-  "rules": {
-    "react/display-name": "off",
-    "react/react-in-jsx-scope": "off",
-    "react/prop-types": "off",
-    "semi": "off",
-    "no-useless-concat": "off",
-    "no-unused-vars": "off"
-  },
-  "globals": {
-    "React": "writable"
   }
 }

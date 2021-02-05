@@ -1,5 +1,4 @@
+
 build
 public
 node_modules
-src/registerServiceWorker.js
-src/**/__tests__/**

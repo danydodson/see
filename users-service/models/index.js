@@ -16,14 +16,11 @@ const imgurl = [
 ]
 
 const UserSchema = mongoose.Schema({
-  firstname: {
-    type: String
-  },
-  lastname: {
-    type: String
+  name: {
+    type: String,
   },
   email: {
-    type: String
+    type: String, 
   },
   username: {
     type: String
@@ -31,9 +28,9 @@ const UserSchema = mongoose.Schema({
   password: {
     type: String
   },
-  gender: {
-    type: String, default: 'it', enum: ['She/Her/Hers/Herself', 'He/Him/His/Himself', 'They/Them/Theirs/Themself', 'Name/Name/Names/Namesself']
-  },
+  // gender: {
+  //   type: String, default: 'it', enum: ['She/Her/Hers/Herself', 'He/Him/His/Himself', 'They/Them/Theirs/Themself', 'Name/Name/Names/Namesself']
+  // },
   avatar: {
     type: String, default: imgurl[Math.floor(Math.random() * 11)]
   },

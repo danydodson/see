@@ -1,15 +1,11 @@
 {
   "compilerOptions": {
     "baseUrl": "src",
-    "module": "es2020",
     "target": "es2020",
-    "checkJs": true
   },
-  "include": [
-    "src"
-  ],
   "exclude": [
     "build",
+    ".vscode",
     "node_modules"
   ]
 }

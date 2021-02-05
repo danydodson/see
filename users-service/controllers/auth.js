@@ -29,7 +29,6 @@ exports.getUsers = async (req, res) => {
 
 }
 
-
 // @access Public
 // @route POST /api/v1/user
 // @desc Create a new user 
@@ -37,7 +36,7 @@ exports.getUsers = async (req, res) => {
 exports.addUser = async (req, res) => {
   try {
 
-    let userData = { firstname, lastname, email, username, password } = req.body
+    let userData = { email, username, password } = req.body
 
     let hashed = await hashPassword(password)
 
@@ -61,9 +60,7 @@ exports.addUser = async (req, res) => {
     console.log(err)
 
     if (err.name === 'ValidationError') {
-
       const messages = Object.values(err.errors).map(val => val.message)
-
       return res.status(400).json({ success: false, error: messages })
     }
 

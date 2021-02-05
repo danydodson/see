@@ -29,8 +29,7 @@ webstack-micro
 **/node_modules/
 
 # vscode
-**/.vscode/*
-**/*.code-workspace.json
+# !**/.vscode/*.code-workspace.json
 !**/.vscode/tasks.json
 !**/.vscode/launch.json
 !**/.vscode/settings.json

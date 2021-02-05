@@ -11,6 +11,8 @@ RUN yarn --pure-lockfile --silent
 
 COPY . .
 
+# RUN yarn build
+
 # EXPOSE 3000
 
 CMD ["yarn", "run", "docker"]

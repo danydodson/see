@@ -1,22 +1,24 @@
 {
   "name": "nonce-pwa",
+  "version": "1.0.0",
   "description": "nonce-pwa",
-  "version": "1.0.1",
-  "proxy": "http://localhost:8080",
+  "repository": "github:danydodson/nonce",
+  "author": "Dany Dodson",
+  "proxy": "http://nginx-proxy:8080",
   "private": true,
   "scripts": {
-    "start": "react-scripts start",
     "docker": "react-scripts start",
-    "serve": "serve -s -n build",
-    "prod": "yarn build && yarn serve",
-    "build": "GENERATE_SOURCEMAP=false react-scripts build",
     "lint": "eslint './src/**/*.{js,jsx}'",
     "lint:fix": "yarn run lint --fix",
-    "sitemap": "npx sitemap-generator-cli -f './public/sitemap.xml' https://nonce.herokuapp.com/",
-    "clean": "sudo rm -rf node_modules && sudo rm -rf build && sudo rm -rf yarn.lock"
+    "build": "GENERATE_SOURCEMAP=false react-scripts build",
+    "serve": "serve -s -n build",
+    "start": "yarn build && yarn serve",
+    "clean": "sudo rm -rf node_modules && sudo rm -rf build && sudo rm -rf yarn.lock",
+    "refresh": "yarn clean && yarn install && yarn build",
+    "sitemap": "npx sitemap-generator-cli -f './public/sitemap.xml' https://nonce.herokuapp.com/"
   },
   "dependencies": {
-    "@datadog/browser-rum": "^2.5.0",
+    "@datadog/browser-rum": "^2.5.1",
     "@material-ui/core": "^4.11.3",
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.5",
@@ -28,7 +30,7 @@
     "dayjs": "^1.10.4",
     "formik": "^2.2.6",
     "is-mobile": "^2.2.2",
-    "jose": "3.5.4",
+    "jose": "3.6.0",
     "notistack": "^1.0.3",
     "overmind": "^27.0.0",
     "overmind-react": "^28.0.0",
@@ -41,26 +43,25 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.2",
     "react-select": "^4.0.2",
+    "react-spring": "^8.0.27",
     "request-ip": "^2.1.3",
     "uuid": "^8.3.2",
     "yup": "^0.32.8"
   },
   "devDependencies": {
     "cross-env": "^7.0.3",
-    "eslint-config-prettier": "^7.2.0",
-    "eslint-plugin-prettier": "^3.3.1",
     "eslint-plugin-react": "^7.22.0",
     "eslint-plugin-react-hooks": "^4.2.0",
-    "express": "^4.17.1",
+    "heroku": "^7.47.12",
     "husky": "^4.3.8",
     "lint-staged": "^10.5.3",
-    "prettier": "^2.2.1",
-    "prettier-eslint": "^12.0.0",
-    "sitemap-generator": "8.5.1",
-    "stylelint": "^13.9.0",
-    "stylelint-config-css-modules": "^2.2.0",
-    "stylelint-config-prettier": "^8.0.2",
-    "stylelint-config-recommended": "^3.0.0"
+    "sitemap-generator": "8.5.1"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">= 14.15.3",
+    "npm": ">= 6.14.9",
+    "yarn": "^1.22.5"
   },
   "husky": {
     "hooks": {
@@ -69,12 +70,6 @@
   },
   "lint-staged": {
     "**/*.js": [
-      "prettier --write",
-      "eslint"
-    ],
-    "**/*.css": [
-      "stylelint --fix",
-      "prettier --write",
       "eslint"
     ]
   },

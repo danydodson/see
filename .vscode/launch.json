@@ -6,6 +6,20 @@
       "name": "Docker: Users",
       "localRoot": "${workspaceFolder}/users-service",
       "remoteRoot": "/usr/src/app"
+    },
+    {
+      "type": "pwa-chrome",
+      "request": "launch",
+      "name": "Chrome: Web-Client",
+      "url": "http://localhost:3000",
+      "webRoot": "${workspaceFolder}/web-client"
     }
-  ]
+  ],
+  "inputs": [],
+  "compounds": [
+    {
+      "name": "Compound",
+      "configurations": []
+    }
+  ],
 }

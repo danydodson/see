@@ -1,5 +1,10 @@
 {
   "files.exclude": {
+    "**/build-tools": true,
+    "**/fluentd-logs": true,
+    "**/.dockerignore": true,
     "**/node_modules": true,
+    "**/yarn.lock": true,
+    "readme.md": true,
   }
 }

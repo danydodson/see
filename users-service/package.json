@@ -1,32 +1,33 @@
 {
   "name": "users-service",
   "version": "1.0.0",
+  "author": "Dany Dodson",
   "description": "users-service",
   "main": "app.js",
   "scripts": {
+    "start": "nodemon app",
+    "debug": "nodemon --inspect=0.0.0.0:9229 app",
+    "test": "jest",
     "docker:build": "docker build -t danydodson/ss-user-service .",
     "docker:run": "docker run danydodson/ss-user-service",
     "docker:push": "docker push danydodson/ss-user-service",
-    "start": "nodemon app",
-    "debug": "nodemon --inspect=0.0.0.0:9229 app.js",
-    "test": "jest",
     "clean": "rm -rf node_modules"
   },
   "dependencies": {
     "apidoc": "^0.26.0",
     "dotenv-safe": "^8.2.0",
     "express": "^4.17.1",
-    "mongoose": "^5.11.10",
+    "mongoose": "^5.11.15",
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
     "jwt-simple": "^0.5.6",
-    "helmet": "^4.3.1",
+    "helmet": "^4.4.1",
     "http-status": "^1.5.0"
   },
   "devDependencies": {
-    "jest":"^26.6.3",
-    "nodemon": "^2.0.6"
+    "jest": "^26.6.3",
+    "nodemon": "^2.0.7"
   },
-  "author": "Dany Dodson",
-  "license": "ISC"
+  "license": "ISC",
+  "keywords": []
 }

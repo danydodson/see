@@ -4,6 +4,7 @@ import SignUpCtrl from '../../components/Auth'
 import Meta from 'components/Meta'
 import useStyles from './styles'
 
+
 function SignUpPage() {
   const classes = useStyles()
 
@@ -12,17 +13,7 @@ function SignUpPage() {
       <Meta title="Sign Up" description="User sign up page" />
 
       <Container maxWidth="sm" className={classes.root}>
-        <SignUpCtrl
-          className={classes.root}
-          values={{
-            firstname: '',
-            lastname: '',
-            email: '',
-            username: '',
-            password: '',
-            password2: ''
-          }}
-        />
+        <SignUpCtrl className={classes.root} />
       </Container>
     </>
   )
