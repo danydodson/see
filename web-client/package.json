@@ -1,18 +1,18 @@
 {
   "name": "nonce-pwa",
   "version": "1.0.0",
-  "description": "nonce-pwa",
-  "repository": "github:danydodson/nonce",
+  "license": "MIT",
   "author": "Dany Dodson",
-  "proxy": "http://nginx-proxy:8080",
+  "description": "nonce-pwa",
   "private": true,
+  "proxy": "http://nginx-proxy:8080",
   "scripts": {
-    "docker": "react-scripts start",
-    "lint": "eslint './src/**/*.{js,jsx}'",
-    "lint:fix": "yarn run lint --fix",
+    "start": "react-scripts start",
     "build": "GENERATE_SOURCEMAP=false react-scripts build",
     "serve": "serve -s -n build",
-    "start": "yarn build && yarn serve",
+    "prod": "yarn build && yarn serve",
+    "lint": "eslint './src/**/*.{js,jsx}'",
+    "lint:fix": "yarn run lint --fix",
     "clean": "sudo rm -rf node_modules && sudo rm -rf build && sudo rm -rf yarn.lock",
     "refresh": "yarn clean && yarn install && yarn build",
     "sitemap": "npx sitemap-generator-cli -f './public/sitemap.xml' https://nonce.herokuapp.com/"
@@ -30,7 +30,7 @@
     "dayjs": "^1.10.4",
     "formik": "^2.2.6",
     "is-mobile": "^2.2.2",
-    "jose": "3.6.0",
+    "jose": "^3.6.0",
     "notistack": "^1.0.3",
     "overmind": "^27.0.0",
     "overmind-react": "^28.0.0",
@@ -55,13 +55,7 @@
     "heroku": "^7.47.12",
     "husky": "^4.3.8",
     "lint-staged": "^10.5.3",
-    "sitemap-generator": "8.5.1"
-  },
-  "license": "MIT",
-  "engines": {
-    "node": ">= 14.15.3",
-    "npm": ">= 6.14.9",
-    "yarn": "^1.22.5"
+    "sitemap-generator": "^8.5.1"
   },
   "husky": {
     "hooks": {

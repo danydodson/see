@@ -1,25 +1,30 @@
 const mongoose = require('mongoose')
 
-const { db_uri, env } = require('.')
+const mongoConnection = (env) => {
 
-mongoose.connection.on('error', err => {
-  console.error(`[users api]🔥 db error ${err}`)
-  process.exit(-1)
-})
-
-if (env === 'development') {
-  mongoose.set('debug', true)
-}
-
-exports.connect = () => {
-  mongoose.connect(db_uri, {
+  mongoose.connect(process.env.MONGO_URI, {
     useNewUrlParser: true,
-    useCreateIndex: true,
-    keepAlive: 1,
     useUnifiedTopology: true,
-    useFindAndModify: false,
   }).then((res) => {
-    console.debug(`[users api]✔️ (${env}) ${res.connection.host}`)
+    console.debug(`[users api] ✔️ (${env}) ${res.connection.host} (${res.connection.name})`)
   })
-  return mongoose.connection
+
+  mongoose.Promise = global.Promise
+
+  mongoose.connection.on('error', (err) => {
+    console.error(`[users api] 🔥 (${env}) db ${err.message}`)
+    process.exit(-1)
+  })
+
+  env === 'development'
+    ? mongoose.set('debug', true)
+    : mongoose.set('debug', false)
+
+  mongoose.set('useFindAndModify', false)
+  mongoose.set('useCreateIndex', true)
+  mongoose.set('autoIndex', false)
+
 }
+
+module.exports = mongoConnection
+

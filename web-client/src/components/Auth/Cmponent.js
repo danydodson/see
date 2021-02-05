@@ -1,7 +1,6 @@
 // import React from 'react'
 // import { Formik, Form, Field } from 'formik'
 // import { BrowserRouter as Router } from 'react-router-dom'
-// // import { post } from 'lib/web'
 // import TextInput from '../TextInput/Component'
 // import valid from './valid'
 // import './style.css'

@@ -1,10 +1,14 @@
 import { Formik, Form, Field } from 'formik'
 import { useHistory } from "react-router-dom"
-import { initialValues } from './Validation'
-import { validationSchema } from './Validation'
-import { handleSubmit } from './Validation'
-import axios from 'axios'
 import { useStore } from 'store'
+import axios from 'axios'
+
+import {
+  initialValues,
+  validationSchema,
+  handleSubmit,
+} from './Validation'
+
 import './style.css'
 
 export default function SignUpForm(props) {
@@ -19,17 +23,15 @@ export default function SignUpForm(props) {
     password,
     confirm
   }) => {
-
     const payload = {
       email: email,
       username: username,
       password: password
     }
-
     const response = await axios.post('/users', payload)
-
     history.push('/login')
   }
+
   return (
 
     <div className='app'>

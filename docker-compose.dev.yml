@@ -1,20 +1,6 @@
 version: '3.8'
 services:
 
-  nginx-proxy:
-    build:
-      context: ./nginx-proxy
-      dockerfile: Dockerfile
-    image: danydodson/nginx-proxy
-    volumes:
-      - './nginx-proxy/data:/etc/nginx'
-      - './nginx-proxy/lua:/usr/local/openresty/nginx/lua'
-    networks:
-      - back
-      - front
-    depends_on:
-      - users-service
-
   web-client:
     build:
       context: ./web-client
@@ -30,6 +16,20 @@ services:
       - 'web-vol:/usr/src/app/node_modules'
     stdin_open: true
     networks:
+      - front
+    depends_on:
+      - nginx-proxy
+
+  nginx-proxy:
+    build:
+      context: ./nginx-proxy
+      dockerfile: Dockerfile
+    image: danydodson/nginx-proxy
+    volumes:
+      - './nginx-proxy/data:/etc/nginx'
+      - './nginx-proxy/lua:/usr/local/openresty/nginx/lua'
+    networks:
+      - back
       - front
     depends_on:
       - users-service

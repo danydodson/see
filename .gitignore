@@ -1,8 +1,13 @@
-web-store
-web-overmind
+# temp
+**/social-network
 
 # Env
 **/*.env
+
+# Terraform
+**/.terraform
+**/variables.tf
+**/.terraform.lock.hcl
 
 webstack-micro
 # SSL

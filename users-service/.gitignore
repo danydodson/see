@@ -1,7 +1,7 @@
+# Temp 
 
 # Env
 **/*.env
-!**/*.env.example
 
 # SSL
 **/*.pem

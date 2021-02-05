@@ -1,0 +1,11 @@
+{
+  "folders": [
+    {
+      "name": "nonce",
+      "path": "."
+    }
+  ],
+  "settings": {
+    "files.exclude": {}
+  }
+}

@@ -1,10 +1,16 @@
 {
   "files.exclude": {
+    // 
+    // "readme.md": true,
+    // 
+    "**/.eslintignore": true,
+    "**/.dockerignore": true,
+    "**/yarn.lock": true,
+    // 
+    "**/*/.vscode": true,
+    "**/node_modules": true,
+    // 
     "**/build-tools": true,
     "**/fluentd-logs": true,
-    "**/.dockerignore": true,
-    "**/node_modules": true,
-    "**/yarn.lock": true,
-    "readme.md": true,
   }
 }
