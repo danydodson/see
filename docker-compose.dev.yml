@@ -16,7 +16,7 @@ services:
       - 'web-vol:/usr/src/app/node_modules'
     stdin_open: true
     networks:
-      - front
+      - main
     depends_on:
       - users-service
 
@@ -24,13 +24,13 @@ services:
     build:
       context: ./nginx-proxy
       dockerfile: Dockerfile
+    restart: always
     image: danydodson/nginx-proxy
     volumes:
       - './nginx-proxy/data:/etc/nginx'
       - './nginx-proxy/lua:/usr/local/openresty/nginx/lua'
     networks:
-      - back
-      - front
+      - main
     depends_on:
       - users-service
 
@@ -38,16 +38,16 @@ services:
     build:
       context: ./users-service
       dockerfile: Dockerfile
+    restart: always
     image: danydodson/users-service
     volumes:
       - './users-service:/usr/src/app'
       - 'users-vol:/usr/src/app/node_modules'
     networks:
-      - back
+      - main
 
 networks:
-  back: null
-  front: null
+  main: null
 
 volumes:
   web-vol: null

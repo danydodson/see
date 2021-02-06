@@ -1,11 +1,11 @@
 const router = require('express').Router()
-const userRoutes = require('./users')
+const routes = require('./users')
 
-const api = process.env.API_PATH
+const apiPath = process.env.API_PATH
 
-const apiPath = `/${api}`
+const api = `/${apiPath}`
 
-router.use(apiPath, userRoutes)
-router.use(apiPath, (req, res) => res.status(404).json('No API route found'))
+router.use(api, routes)
+router.use(api, (req, res) => res.status(404).json('No API route found'))
 
 module.exports = router

@@ -1,4 +1,4 @@
-const usersApi = require('./auth')
+const users = require('./users')
 
-module.exports = usersApi
+module.exports = users
 

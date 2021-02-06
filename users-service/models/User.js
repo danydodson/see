@@ -15,29 +15,29 @@ const imgurl = [
   "https://petsy-cdm-seeds.s3-us-west-1.amazonaws.com/png/zebra.png"
 ]
 
-// const postLikeSchema = new mongoose.Schema({
-//   post: {
-//     type: mongoose.Schema.ObjectId,
-//     required: true,
-//     ref: 'Post',
-//   },
-// })
+const postLikeSchema = new mongoose.Schema({
+  post: {
+    type: mongoose.Schema.ObjectId,
+    required: true,
+    ref: 'Post',
+  },
+})
 
-// const commentLikeSchema = new mongoose.Schema({
-//   comment: {
-//     type: mongoose.Schema.ObjectId,
-//     required: true,
-//     ref: 'Comment',
-//   },
-// })
+const commentLikeSchema = new mongoose.Schema({
+  comment: {
+    type: mongoose.Schema.ObjectId,
+    required: true,
+    ref: 'Comment',
+  },
+})
 
-// const commentReplyLikeSchema = new mongoose.Schema({
-//   comment: {
-//     type: mongoose.Schema.ObjectId,
-//     required: true,
-//     ref: 'Repl',
-//   },
-// })
+const commentReplyLikeSchema = new mongoose.Schema({
+  comment: {
+    type: mongoose.Schema.ObjectId,
+    required: true,
+    ref: 'Repl',
+  },
+})
 
 const UserSchema = mongoose.Schema({
   firstName: {
@@ -65,10 +65,14 @@ const UserSchema = mongoose.Schema({
   password: {
     type: String
   },
-  profilePicture: {
-    type: String,
-    default: imgurl[Math.floor(Math.random() * 11)]
+  image: {
+    data: Buffer,
+    contentType: String,
   },
+  // profilePicture: {
+  //   type: String,
+  //   default: imgurl[Math.floor(Math.random() * 11)]
+  // },
   bio: {
     type: String,
     default: '',
@@ -86,22 +90,26 @@ const UserSchema = mongoose.Schema({
     type: Boolean,
     default: process.env.ENABLE_SEND_EMAIL === 'true' ? false : true,
   },
-  createdOn: {
-    type: Date,
-    default: Date.now
-  },
-  updatedOn: {
-    type: Date,
-    default: Date.now
-  },
-  // postLikes: [postLikeSchema],
-  // commentLikes: [commentLikeSchema],
-  // commentReplyLikes: [commentReplyLikeSchema],
+  postLikes: [postLikeSchema],
+  commentLikes: [commentLikeSchema],
+  commentReplyLikes: [commentReplyLikeSchema],
 }, {
   timestamps: true
 })
 
 UserSchema.index({ username: 'text', firstName: 'text', lastName: 'text' })
+
+UserSchema.methods.jist = function () {
+  var jist = {
+    id: this._id.toString(),
+    email: this.email,
+    username: this.username,
+    image: this.image,
+    // updatedAt: this.updatedAt,
+    // createdAt: this.createdAt,
+  }
+  return jist
+}
 
 const User = mongoose.model('User', UserSchema)
 

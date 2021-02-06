@@ -1,8 +1,6 @@
 import classnames from 'classnames'
 
-const InputFeedback = ({
-  error
-}) => (
+const InputFeedback = ({ error }) => (
   error
     ? <div className='input-feedback'>{error}</div>
     : null
@@ -57,7 +55,7 @@ const TextInput = ({
         {...props}
       />
 
-      <InputFeedback error={error} />
+      {/* <InputFeedback error={error} /> */}
 
     </div>
   )

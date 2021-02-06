@@ -10,7 +10,7 @@
     "**/*/.vscode": true,
     "**/node_modules": true,
     // 
-    "**/.gitignore": true,
+    // "**/.gitignore": true,
     "**/token-service": true,
     "**/build-tools": true,
     "**/fluentd-logs": true,

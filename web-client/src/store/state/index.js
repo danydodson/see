@@ -10,7 +10,8 @@ const initialState = {
   theme: {
     mode: localStorage.getItem('theme-mode') || 'dark'
   },
-  users: {},
+  users: [],
+  uploads: [],
 }
 
 export { initialState }

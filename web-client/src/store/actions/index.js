@@ -21,6 +21,14 @@ const sw = {
   }
 }
 
+const uploads = {
+  add({ state }, upload) {
+    // state.upload = upload
+    state.uploads.push(upload)
+    // state.uploads.push({ ...upload })
+  }
+}
+
 const notifications = {
   push({ state, effects }, notification) {
     state.notifications.push({
@@ -43,4 +51,4 @@ const notifications = {
   }
 }
 
-export { theme, sw, notifications }
+export { theme, uploads, sw, notifications }

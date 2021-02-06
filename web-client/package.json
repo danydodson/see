@@ -4,8 +4,8 @@
   "license": "MIT",
   "author": "Dany Dodson",
   "description": "nonce-pwa",
-  "private": true,
   "proxy": "http://nginx-proxy:8080",
+  "private": true,
   "scripts": {
     "start": "react-scripts start",
     "build": "GENERATE_SOURCEMAP=false react-scripts build",
@@ -20,6 +20,7 @@
   "dependencies": {
     "@datadog/browser-rum": "^2.5.1",
     "@material-ui/core": "^4.11.3",
+    "@material-ui/icons": "^4.11.2",
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.5",
     "@testing-library/user-event": "^12.6.3",
@@ -31,6 +32,7 @@
     "formik": "^2.2.6",
     "is-mobile": "^2.2.2",
     "jose": "^3.6.0",
+    "material-ui-dropzone": "^3.5.0",
     "notistack": "^1.0.3",
     "overmind": "^27.0.0",
     "overmind-react": "^28.0.0",

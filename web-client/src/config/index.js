@@ -66,7 +66,7 @@ const cancelationMessage = 'operation is manually canceled'
 
 const dateFormat = 'MMMM DD, YYYY'
 
-const title = 'React PWA'
+const title = 'Nonce'
 
 const themePair = ['dark', 'light']
 
@@ -87,4 +87,17 @@ const loader = {
   minimumLoading: 700 // but if it appears, it will stay for at least 700 milliseconds
 }
 
-export { messages, cancelationMessage, dateFormat, copyright, email, domain, repository, loader, title, themePair, notifications, themes }
+export {
+  messages,
+  cancelationMessage,
+  dateFormat,
+  copyright,
+  email,
+  domain,
+  repository,
+  loader,
+  title,
+  themePair,
+  notifications,
+  themes
+}

@@ -6,7 +6,11 @@ import './global.css'
 
 if (!document.ie) {
   // check for ie
-  Promise.all([import('react'), import('react-dom'), import('App')]).then(([{ default: React }, { default: ReactDOM }, { default: App }]) => {
+  Promise.all([import('react'),
+  import('react-dom'),
+  import('App')]).then(([{ default: React },
+    { default: ReactDOM },
+    { default: App }]) => {
     ReactDOM.render(<App />, document.getElementById('root'))
   })
 

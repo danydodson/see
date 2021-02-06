@@ -1,3 +1,4 @@
+// require('dotenv/config')
 require('dotenv').config()
 
 const express = require('express')
@@ -14,13 +15,14 @@ mongoConnection(env)
 
 app.use(cors())
 app.use(express.json())
+app.use('/public', express.static('public'))
+
 app.use(routes)
 
 const host = process.env.HOST
 const port = process.env.PORT
-const api = process.env.API_PATH
+const apiPath = process.env.API_PATH
 
 app.listen(port, () => {
-  console.info(`[users api]✔️(${env})⭐http://${host}:${port}/${api}`)
+  console.info(`[users api]✔️(${env})⭐http://${host}:${port}/${apiPath}`)
 })
-
