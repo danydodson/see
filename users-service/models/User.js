@@ -15,39 +15,46 @@ const imgurl = [
   "https://petsy-cdm-seeds.s3-us-west-1.amazonaws.com/png/zebra.png"
 ]
 
-const postLikeSchema = new mongoose.Schema({
-  post: {
-    type: mongoose.Schema.ObjectId,
-    required: true,
-    ref: 'Post',
-  },
-})
+// const postLikeSchema = new mongoose.Schema({
+//   post: {
+//     type: mongoose.Schema.ObjectId,
+//     required: true,
+//     ref: 'Post',
+//   },
+// })
 
-const commentLikeSchema = new mongoose.Schema({
-  comment: {
-    type: mongoose.Schema.ObjectId,
-    required: true,
-    ref: 'Comment',
-  },
-})
+// const commentLikeSchema = new mongoose.Schema({
+//   comment: {
+//     type: mongoose.Schema.ObjectId,
+//     required: true,
+//     ref: 'Comment',
+//   },
+// })
 
-const commentReplyLikeSchema = new mongoose.Schema({
-  comment: {
-    type: mongoose.Schema.ObjectId,
-    required: true,
-    ref: 'Repl',
-  },
-})
+// const commentReplyLikeSchema = new mongoose.Schema({
+//   comment: {
+//     type: mongoose.Schema.ObjectId,
+//     required: true,
+//     ref: 'Repl',
+//   },
+// })
 
-const UserSchema = new mongoose.Schema({
-  name: {
+const UserSchema = mongoose.Schema({
+  firstName: {
     type: String,
+    default: '',
+  },
+  lastName: {
+    type: String,
+    default: '',
   },
   email: {
     type: String,
+    default: '',
   },
   username: {
-    type: String
+    type: String,
+    default: '',
   },
   salt: {
     type: String
@@ -87,13 +94,15 @@ const UserSchema = new mongoose.Schema({
     type: Date,
     default: Date.now
   },
-  postLikes: [postLikeSchema],
-  commentLikes: [commentLikeSchema],
-  commentReplyLikes: [commentReplyLikeSchema],
+  // postLikes: [postLikeSchema],
+  // commentLikes: [commentLikeSchema],
+  // commentReplyLikes: [commentReplyLikeSchema],
 }, {
   timestamps: true
 })
 
 UserSchema.index({ username: 'text', firstName: 'text', lastName: 'text' })
 
-module.exports = mongoose.model('User', UserSchema)
+const User = mongoose.model('User', UserSchema)
+
+module.exports = User

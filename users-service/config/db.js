@@ -6,13 +6,13 @@ const mongoConnection = (env) => {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   }).then((res) => {
-    console.debug(`[users api] ✔️ (${env}) ${res.connection.host} (${res.connection.name})`)
+    console.info(`[users api]✔️(${env})⭐${res.connection.host}⭐(${res.connection.name})`)
   })
 
   mongoose.Promise = global.Promise
 
   mongoose.connection.on('error', (err) => {
-    console.error(`[users api] 🔥 (${env}) db ${err.message}`)
+    console.error(`[users api]❌(${env})🔥db🔥${err.message}`)
     process.exit(-1)
   })
 

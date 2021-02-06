@@ -1,7 +1,7 @@
 {
   "files.exclude": {
     // 
-    // "readme.md": true,
+    "readme.md": true,
     // 
     "**/.eslintignore": true,
     "**/.dockerignore": true,
@@ -10,6 +10,8 @@
     "**/*/.vscode": true,
     "**/node_modules": true,
     // 
+    "**/.gitignore": true,
+    "**/token-service": true,
     "**/build-tools": true,
     "**/fluentd-logs": true,
   }

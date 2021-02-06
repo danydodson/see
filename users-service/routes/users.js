@@ -1,6 +1,10 @@
 const express = require('express')
 const router = express.Router()
-const { getUsers, addUser } = require('../controllers')
+const {
+  getUsers,
+  addUser
+} = require('../controllers')
+
 
 router
   .route('/:id?')
@@ -9,5 +13,6 @@ router
 router
   .route('/')
   .post(addUser)
+
 
 module.exports = router
