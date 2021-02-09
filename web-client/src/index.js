@@ -1,4 +1,5 @@
 import * as serviceWorker from './serviceWorker'
+// import reportWebVitals from './reportWebVitals'
 
 import store from 'store'
 
@@ -18,4 +19,7 @@ if (!document.ie) {
     onSuccess: store.actions.sw.handleSuccess,
     onUpdate: reg => store.actions.sw.handleUpdate(reg)
   })
+
 }
+
+// reportWebVitals()

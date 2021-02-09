@@ -22,6 +22,12 @@ build:
 # --------------------------------------------------------
 # Push the production image to hub.
 # 
+.PHONY: reload-nginx
+reload-nginx:
+	@docker-compose exec nginx-proxy nginx -s reload
+# --------------------------------------------------------
+# Push the production image to hub.
+# 
 .PHONY: push
 push: build
 	@docker push ${PROD_IMAGE}

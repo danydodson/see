@@ -1,8 +1,8 @@
-// require('dotenv/config')
 require('dotenv').config()
 
 const express = require('express')
 const cors = require('cors')
+const err = require('./utils')
 const app = express()
 const routes = require('./routes')
 
@@ -13,16 +13,17 @@ const env = process.env.NODE_ENV === 'production'
 const mongoConnection = require('./config')
 mongoConnection(env)
 
+app.enable('trust proxy')
+
 app.use(cors())
 app.use(express.json())
-app.use('/public', express.static('public'))
-
 app.use(routes)
+app.use(err.errorHandler)
 
 const host = process.env.HOST
 const port = process.env.PORT
-const apiPath = process.env.API_PATH
+const path = process.env.API_PATH
 
 app.listen(port, () => {
-  console.info(`[users api]✔️(${env})⭐http://${host}:${port}/${apiPath}`)
+  console.info(`[users api]✔️(${env})⭐http://${host}:${port}/${path}`)
 })

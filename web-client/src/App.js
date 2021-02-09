@@ -1,4 +1,5 @@
 import React from 'react'
+import { render } from '@testing-library/react'
 
 import CssBaseline from '@material-ui/core/CssBaseline'
 import Box from '@material-ui/core/Box'
@@ -16,7 +17,7 @@ function App() {
   return (
     <StoreProvider>
       <ThemeProvider>
-        <Box display="flex">
+        <Box display='flex'>
           <CssBaseline />
           <Router>
             <Layout />

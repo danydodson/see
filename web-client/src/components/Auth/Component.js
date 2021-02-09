@@ -23,9 +23,10 @@ export default function SignUpForm(props) {
       username: username,
       password: password
     }
-    const response = await axios.post('/users', payload)
+    const response = await axios.post('/signup', payload)
     history.push('/login')
   }
+
 
   return (
 

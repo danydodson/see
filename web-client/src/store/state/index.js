@@ -1,5 +1,4 @@
 const initialState = {
-  currentUserId: null,
   notifications: [],
   sw: {
     isInitialized: false,
@@ -8,10 +7,13 @@ const initialState = {
   },
   redirect: null,
   theme: {
-    mode: localStorage.getItem('theme-mode') || 'dark'
+    mode: localStorage.getItem('theme-mode') || 'light'
   },
-  users: [],
-  uploads: [],
+  signupData: {},
+  signinData: {},
+  user: {},
+  userId: '',
+  userUploads: [],
 }
 
 export { initialState }

@@ -1,45 +1,37 @@
 const mongoose = require('mongoose')
+const Schema = mongoose.Schema
 
-const imgurl = [
-  "https://petsy-cdm-seeds.s3-us-west-1.amazonaws.com/png/bull.png",
-  "https://petsy-cdm-seeds.s3-us-west-1.amazonaws.com/png/chick.png",
-  "https://petsy-cdm-seeds.s3-us-west-1.amazonaws.com/png/crab.png",
-  "https://petsy-cdm-seeds.s3-us-west-1.amazonaws.com/png/fox.png",
-  "https://petsy-cdm-seeds.s3-us-west-1.amazonaws.com/png/hedgehog.png",
-  "https://petsy-cdm-seeds.s3-us-west-1.amazonaws.com/png/hippopotamus.png",
-  "https://petsy-cdm-seeds.s3-us-west-1.amazonaws.com/png/koala.png",
-  "https://petsy-cdm-seeds.s3-us-west-1.amazonaws.com/png/lemur.png",
-  "https://petsy-cdm-seeds.s3-us-west-1.amazonaws.com/png/pig.png",
-  "https://petsy-cdm-seeds.s3-us-west-1.amazonaws.com/png/tiger.png",
-  "https://petsy-cdm-seeds.s3-us-west-1.amazonaws.com/png/whale.png",
-  "https://petsy-cdm-seeds.s3-us-west-1.amazonaws.com/png/zebra.png"
-]
-
-const postLikeSchema = new mongoose.Schema({
+const PostLikeSchema = new Schema({
   post: {
-    type: mongoose.Schema.ObjectId,
+    type: Schema.ObjectId,
     required: true,
     ref: 'Post',
   },
 })
 
-const commentLikeSchema = new mongoose.Schema({
+const CommentLikeSchema = new Schema({
   comment: {
-    type: mongoose.Schema.ObjectId,
+    type: Schema.ObjectId,
     required: true,
     ref: 'Comment',
   },
 })
 
-const commentReplyLikeSchema = new mongoose.Schema({
+const CommentReplyLikeSchema = new Schema({
   comment: {
-    type: mongoose.Schema.ObjectId,
+    type: Schema.ObjectId,
     required: true,
     ref: 'Repl',
   },
 })
 
-const UserSchema = mongoose.Schema({
+const UserSchema = new Schema({
+  email: {
+    type: String,
+    required: () => {
+      return this.provider !== 'email' ? false : true
+    }
+  },
   firstName: {
     type: String,
     default: '',
@@ -48,69 +40,72 @@ const UserSchema = mongoose.Schema({
     type: String,
     default: '',
   },
-  email: {
-    type: String,
-    default: '',
-  },
   username: {
     type: String,
+    required: true,
     default: '',
   },
-  salt: {
-    type: String
-  },
   hash: {
-    type: String
+    type: String,
+    required: true
   },
-  password: {
-    type: String
+  provider: {
+    type: String,
+    required: true,
+    default: 'email'
   },
-  image: {
-    data: Buffer,
-    contentType: String,
+  facebookId: {
+    type: String,
+    unique: true
   },
-  // profilePicture: {
-  //   type: String,
-  //   default: imgurl[Math.floor(Math.random() * 11)]
-  // },
+  googleId: {
+    type: String,
+    unique: true
+  },
+  avatar: {
+    type: String,
+    default: 'https://ik.imagekit.io/vdyy86fmjx/floresh/placeholder_JpZqtK2OR.png'
+  },
   bio: {
     type: String,
     default: '',
   },
   role: {
     type: String,
-    default: 'user',
-    enum: ['user', 'admin'],
+    default: 'role_member',
+    enum: ['role_member', 'role_admin', 'role_merchant']
+  },
+  resetPasswordToken: {
+    type: String
+  },
+  resetPasswordExpires: {
+    type: Date,
+    default: () => new Date(+new Date() + 60000 * 60)
   },
   activityStatus: {
     type: String,
-    default: 'offline',
+    default: 'offline'
   },
   activated: {
     type: Boolean,
-    default: process.env.ENABLE_SEND_EMAIL === 'true' ? false : true,
+    default: process.env.ENABLE_SEND_EMAIL === 'true' ? false : true
   },
-  postLikes: [postLikeSchema],
-  commentLikes: [commentLikeSchema],
-  commentReplyLikes: [commentReplyLikeSchema],
+  postLikes: [PostLikeSchema],
+  commentLikes: [CommentLikeSchema],
+  commentReplyLikes: [CommentReplyLikeSchema],
 }, {
   timestamps: true
 })
 
-UserSchema.index({ username: 'text', firstName: 'text', lastName: 'text' })
+UserSchema.index({ username: 'text' })
 
-UserSchema.methods.jist = function () {
-  var jist = {
-    id: this._id.toString(),
-    email: this.email,
-    username: this.username,
-    image: this.image,
-    // updatedAt: this.updatedAt,
-    // createdAt: this.createdAt,
+UserSchema.set('toJSON', {
+  virtuals: true,
+  versionKey: false,
+  transform: function (doc, ret) {
+    delete ret._id
+    delete ret.hash
   }
-  return jist
-}
+})
 
-const User = mongoose.model('User', UserSchema)
-
-module.exports = User
+module.exports = mongoose.model('User', UserSchema)

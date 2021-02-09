@@ -3,51 +3,57 @@ services:
 
   web-client:
     build:
+      target: prod
       context: ./web-client
-      dockerfile: Dockerfile
     image: danydodson/web-client
     ports:
       - 3000:3000
     environment:
       - NODE_ENV=development
-      - CHOKIDAR_USEPOLLING=true
+      - CHOKIDAR_USEPOLLING:true
     volumes:
       - './web-client:/usr/src/app'
       - 'web-vol:/usr/src/app/node_modules'
     stdin_open: true
     networks:
-      - main
+      - front
     depends_on:
       - users-service
 
   nginx-proxy:
     build:
+      target: prod
       context: ./nginx-proxy
-      dockerfile: Dockerfile
     restart: always
     image: danydodson/nginx-proxy
+    environment:
+      - NODE_ENV=development
     volumes:
       - './nginx-proxy/data:/etc/nginx'
       - './nginx-proxy/lua:/usr/local/openresty/nginx/lua'
     networks:
-      - main
+      - front
+      - back
     depends_on:
       - users-service
 
   users-service:
-    build:
+    build: 
+      target: prod
       context: ./users-service
-      dockerfile: Dockerfile
     restart: always
     image: danydodson/users-service
+    environment:
+      - NODE_ENV=development
     volumes:
       - './users-service:/usr/src/app'
       - 'users-vol:/usr/src/app/node_modules'
     networks:
-      - main
+      - back
 
 networks:
-  main: null
+  back: null
+  front: null
 
 volumes:
   web-vol: null

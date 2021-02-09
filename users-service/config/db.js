@@ -1,17 +1,16 @@
 const mongoose = require('mongoose')
 
-const mongoConnection = (env) => {
+const options = { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false, useCreateIndex: true, autoIndex: false }
 
-  mongoose.connect(process.env.MONGO_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  }).then((res) => {
-    console.info(`[users api]✔️(${env})⭐${res.connection.host}⭐(${res.connection.name})`)
-  })
+const mongoConnection = env => {
+  mongoose.connect(process.env.MONGO_URI, options)
+    .then((res) => {
+      console.info(`[users api]✔️(${env})⭐${res.connection.host}⭐(${res.connection.name})`)
+    })
 
   mongoose.Promise = global.Promise
 
-  mongoose.connection.on('error', (err) => {
+  mongoose.connection.on('error', err => {
     console.error(`[users api]❌(${env})🔥db🔥${err.message}`)
     process.exit(-1)
   })
@@ -20,11 +19,6 @@ const mongoConnection = (env) => {
     ? mongoose.set('debug', true)
     : mongoose.set('debug', false)
 
-  mongoose.set('useFindAndModify', false)
-  mongoose.set('useCreateIndex', true)
-  mongoose.set('autoIndex', false)
-
 }
 
 module.exports = mongoConnection
-

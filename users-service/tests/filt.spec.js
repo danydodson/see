@@ -1,4 +1,4 @@
-function filterByTerm(inputArr, searchTerm) {
+function filt(inputArr, searchTerm) {
   return inputArr.filter(function (arrayElement) {
     return arrayElement.url.match(searchTerm)
   })
@@ -14,7 +14,7 @@ describe('Filter function', () => {
 
     const output = [{ id: 3, url: 'https://www.link3.dev' }]
 
-    expect(filterByTerm(input, 'link')).toEqual(output)
+    expect(filt(input, 'link')).toEqual(output)
 
   })
 })
