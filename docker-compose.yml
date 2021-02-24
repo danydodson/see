@@ -2,9 +2,7 @@ version: '3.8'
 services:
 
   web-client:
-    build:
-      target: prod
-      context: ./web-client
+    build: ./web-client
     image: danydodson/web-client
     ports:
       - 3000:3000
@@ -18,12 +16,10 @@ services:
     networks:
       - front
     depends_on:
-      - users-service
+      - nginx-proxy
 
   nginx-proxy:
-    build:
-      target: prod
-      context: ./nginx-proxy
+    build: ./nginx-proxy
     restart: always
     image: danydodson/nginx-proxy
     environment:
@@ -38,9 +34,7 @@ services:
       - users-service
 
   users-service:
-    build: 
-      target: prod
-      context: ./users-service
+    build: ./users-service
     restart: always
     image: danydodson/users-service
     environment:

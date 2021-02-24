@@ -1,5 +1,4 @@
 import * as serviceWorker from './serviceWorker'
-// import reportWebVitals from './reportWebVitals'
 
 import store from 'store'
 
@@ -21,5 +20,3 @@ if (!document.ie) {
   })
 
 }
-
-// reportWebVitals()

@@ -1,23 +1,21 @@
 import React from 'react'
-
 import Container from '@material-ui/core/Container'
-import Typography from '@material-ui/core/Typography'
-
+import SignInCtrl from '../../components/SignIn'
 import Meta from 'components/Meta'
-
 import useStyles from './styles'
 
-function LogInPage() {
+function SignInPage() {
   const classes = useStyles()
 
   return (
     <>
-      <Meta title="Log In Pagen" description="User login page" />
+      <Meta title='Sign Up' description='User sign in page' />
+      
       <Container maxWidth="sm" className={classes.root}>
-        <Typography variant="h3">Log In</Typography>
+        <SignInCtrl className={classes.root} />
       </Container>
     </>
   )
 }
 
-export default LogInPage
+export default SignInPage

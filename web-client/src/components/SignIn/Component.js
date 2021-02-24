@@ -4,6 +4,7 @@ import { useHistory } from "react-router-dom"
 import useStyles from './styles'
 import axios from 'axios'
 import './style.css'
+import { createHook, Provider } from "overmind-react"
 
 import {
   initialValues,
@@ -11,27 +12,26 @@ import {
   handleSubmit,
 } from './Validation'
 
-export default function SignUpForm(props) {
+const useApp = createHook()
+
+export default function SignInForm(props) {
   const classes = useStyles()
   let history = useHistory()
 
-  // const { state, actions } = useStore()
+  const { state, actions } = useApp()
 
-  const handleSubmit = async ({ email, username, password }) => {
-    const payload = {
-      email: email,
-      username: username,
-      password: password
-    }
-    const response = await axios.post('/signup', payload)
-    history.push('/login')
+  const handleSubmit = async ({ email, password }) => {
+    const payload = { email: email, password: password }
+    actions.user.signin(payload)
+
+    // const response = await axios.post('/users/signin', payload)
+    // history.push('/')
   }
-
 
   return (
 
     <div className={classes.root}>
-      <h1>Create your account</h1>
+      <h1>Sign in</h1>
 
       <Formik
         initialValues={initialValues}
@@ -64,18 +64,6 @@ export default function SignUpForm(props) {
                 onBlur={handleBlur}
               />
 
-
-              <TextInput
-                id='username'
-                type='text'
-                label='Username'
-                placeholder='Username'
-                value={values.username}
-                error={errors.username && touched.username}
-                onChange={handleChange}
-                onBlur={handleBlur}
-              />
-
               <TextInput
                 id='password'
                 type='password'
@@ -83,17 +71,6 @@ export default function SignUpForm(props) {
                 placeholder='Password'
                 value={values.password}
                 error={errors.password && touched.password}
-                onChange={handleChange}
-                onBlur={handleBlur}
-              />
-
-              <TextInput
-                id='confirm'
-                type='password'
-                label='Confirm'
-                placeholder='Confirm'
-                value={values.confirm}
-                error={errors.confirm && touched.confirm}
                 onChange={handleChange}
                 onBlur={handleBlur}
               />

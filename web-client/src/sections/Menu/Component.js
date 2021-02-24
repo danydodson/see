@@ -49,11 +49,11 @@ function Menu({ isOpen, onClose, onOpen }) {
         ) : null}
 
         {isAuthenticated === false ? (
-          <StyledMenuItem onClick={onClose} component={RouterLink} to="/login">
+          <StyledMenuItem onClick={onClose} component={RouterLink} to="/signin">
             <ListItemIcon>
               <SignInIcon />
             </ListItemIcon>
-            <ListItemText primary="Log In" />
+            <ListItemText primary="Sign In" />
           </StyledMenuItem>
         ) : null}
 

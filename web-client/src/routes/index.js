@@ -13,8 +13,8 @@ const routes = [
   },
   {
     exact: true,
-    component: asyncComponentLoader(_ => import('pages/LogIn')),
-    path: '/login'
+    component: asyncComponentLoader(_ => import('pages/SignIn')),
+    path: '/signin'
   },
   {
     exact: true,

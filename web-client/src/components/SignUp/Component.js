@@ -11,20 +11,22 @@ import {
   handleSubmit,
 } from './Validation'
 
-export default function LoginForm(props) {
+export default function SignUpForm(props) {
   const classes = useStyles()
   let history = useHistory()
 
   // const { state, actions } = useStore()
 
-  const handleSubmit = async ({ email, password }) => {
+  const handleSubmit = async ({ email, username, password }) => {
     const payload = {
       email: email,
+      username: username,
       password: password
     }
-    const response = await axios.post('/users', payload)
-    history.push('/login')
+    const response = await axios.post('/users/signup', payload)
+    history.push('/users/signin')
   }
+
 
   return (
 

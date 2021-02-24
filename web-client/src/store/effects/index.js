@@ -1,12 +1,18 @@
 import { resetApp } from 'utils'
 import { v1 as uuidv1 } from 'uuid'
 
+const user = {
+  fetchUser(id) {
+    const response = fetch(`/users/${id}`)
+    return response
+  }
+}
+
 const SW = {} // don't keep it in the store
 
 const sw = {
   update() {
     const registrationWaiting = SW.registration && SW.registration.waiting
-
     if (registrationWaiting) {
       registrationWaiting.postMessage({ type: 'SKIP_WAITING' })
       registrationWaiting.onstatechange = function (e) {
@@ -30,4 +36,4 @@ const theme = {
 
 const genUUID = uuidv1
 
-export { sw, theme, genUUID }
+export { sw, user, theme, genUUID }

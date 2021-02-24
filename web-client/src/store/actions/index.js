@@ -1,5 +1,16 @@
 import { themePair, notifications as notificationsDefoults } from 'config'
 
+const user = {
+  signin({ state, effects }, payload) {
+    state.user = payload
+    effects.user.fetchUser(payload.email)
+  }
+}
+
+const loadApp = async ({ state, effects }) => {
+  state.users = await effects.api.fetchItems()
+}
+
 const theme = {
   toggle({ effects, state }) {
     const mode = state.theme.mode === themePair[0] ? themePair[1] : themePair[0]
@@ -43,4 +54,4 @@ const notifications = {
   }
 }
 
-export { theme, sw, notifications }
+export { theme, user, sw, notifications }
