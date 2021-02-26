@@ -1,0 +1,27 @@
+
+use('nonce')
+
+db.users.drop()
+
+db.users.insertMany([
+  {
+    "_id": { "$oid": "1" },
+    "email": "danydodson@gmail.com",
+    "hash": "$2a$10$X31/EfSuTB3TQKa8/lRcmufqIK/pIq6b83In.jpx6fyzbT8IBBmKG",
+    "username": "danydodson",
+    "provider": "email",
+    "firstName": "Dany",
+    "lastName": "Dodson",
+    "resetPasswordExpires": { "$date": "2021-02-09T16:03:26.983Z" },
+    "role": "role_member",
+    "activityStatus": "offline",
+    "activated": true,
+    "avatar": "https://ik.imagekit.io/vdyy86fmjx/floresh/placeholder_JpZqtK2OR.png",
+    "bio": "This contains user bio.",
+    "postLikes": [],
+    "commentLikes": [],
+    "commentReplyLikes": [],
+    "createdAt": { "$date": "2021-02-09T15:03:27.073Z" },
+    "updatedAt": { "$date": "2021-02-09T15:04:15.150Z" },
+    "__v": 0
+])

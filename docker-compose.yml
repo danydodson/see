@@ -9,9 +9,10 @@ services:
     environment:
       - NODE_ENV=development
       - CHOKIDAR_USEPOLLING:true
+      - NGINX_PROXY_URL=http://nginx-proxy:8080
     volumes:
-      - './web-client:/usr/src/app'
-      - 'web-vol:/usr/src/app/node_modules'
+      - ./web-client:/usr/src/app
+      - web-vol:/usr/src/app/node_modules
     stdin_open: true
     networks:
       - front
@@ -22,11 +23,13 @@ services:
     build: ./nginx-proxy
     restart: always
     image: danydodson/nginx-proxy
+    env_file:
+      - ./nginx-proxy/.env
     environment:
-      - NODE_ENV=development
+      - CLIENT_URL=http://web-client:3000
     volumes:
-      - './nginx-proxy/data:/etc/nginx'
-      - './nginx-proxy/lua:/usr/local/openresty/nginx/lua'
+      - ./nginx-proxy/data:/etc/nginx
+      - ./nginx-proxy/lua:/usr/local/openresty/nginx/lua
     networks:
       - front
       - back
@@ -40,8 +43,8 @@ services:
     environment:
       - NODE_ENV=development
     volumes:
-      - './users-service:/usr/src/app'
-      - 'users-vol:/usr/src/app/node_modules'
+      - ./users-service:/usr/src/app
+      - users-vol:/usr/src/app/node_modules
     networks:
       - back
 

@@ -93,7 +93,9 @@ const UserSchema = new Schema({
   postLikes: [PostLikeSchema],
   commentLikes: [CommentLikeSchema],
   commentReplyLikes: [CommentReplyLikeSchema],
-}, {
+},
+
+ {
   timestamps: true
 })
 

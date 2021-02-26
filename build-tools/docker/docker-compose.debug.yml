@@ -1,0 +1,14 @@
+version: '3.8'
+services:
+
+  users-service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: dev
+    environment:
+      NODE_ENV: development
+    ports:
+      - 3100:3100
+      - 9229:9229
+    command: npm run debug

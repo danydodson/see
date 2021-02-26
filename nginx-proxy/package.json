@@ -1,12 +1,14 @@
 {
-  "name": "nginx-proxy",
+  "name": "nonce-proxy",
   "version": "1.0.0",
-  "description": "nginx-proxy",
+  "description": "nonce-proxy",
   "main": "n/a",
   "scripts": {
-    "beautify": "nginxbeautifier -s 2 -r nginx"
+    "format:lua": "luafmt lua/*.lua",
+    "format:nginx": "nginxbeautifier -s 4 -r nginx"
   },
   "dependencies": {
+    "lua-fmt": "^2.6.0",
     "nginxbeautifier": "^1.0.19"
   },
   "author": "Dany Dodson",

@@ -1,5 +1,13 @@
 {
   "files.exclude": {
-    "**/node_modules": true
-  }
+    "**/node_modules": true,
+    "**/.dockerignore": true,
+    "**/.gitignore": true
+  },
+  "Lua.diagnostics.disable": [
+    // "undefined-global"
+  ],
+  "Lua.diagnostics.globals": [
+    "ngx"
+  ]
 }

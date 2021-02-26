@@ -1,24 +1,32 @@
 const mongoose = require('mongoose')
+const conf = require('.')
 
-const options = { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false, useCreateIndex: true, autoIndex: false }
+const options = {
+  autoIndex: false,
+  useNewUrlParser: true,
+  useCreateIndex: true,
+  useUnifiedTopology: true,
+  useFindAndModify: false,
+}
 
-const mongoConnection = env => {
-  mongoose.connect(process.env.MONGO_URI, options)
+const startDatabase = () => {
+
+  mongoose.connect(conf.atlasURI, options)
     .then((res) => {
-      console.info(`[users api]✔️(${env})⭐${res.connection.host}⭐(${res.connection.name})`)
+      console.info(`[users api]✔️(${conf.env})⭐${res.connection.host}⭐(${res.connection.name})`)
     })
 
   mongoose.Promise = global.Promise
 
   mongoose.connection.on('error', err => {
-    console.error(`[users api]❌(${env})🔥db🔥${err.message}`)
+    console.error(`[users api]❌(${conf.env})🔥db🔥${err.message}`)
     process.exit(-1)
   })
 
-  env === 'development'
+  conf.env === 'development'
     ? mongoose.set('debug', true)
     : mongoose.set('debug', false)
 
 }
 
-module.exports = mongoConnection
+module.exports = startDatabase

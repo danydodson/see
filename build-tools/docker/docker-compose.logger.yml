@@ -1,0 +1,71 @@
+version: '3.8'
+services:
+  web:
+    build:
+      context: ./docker/nginx
+    ports:
+      - 80:80
+    links:
+      - fluentd-logs
+      - dd-agent:dd-agent
+    logging:
+      driver: fluentd
+      options:
+        fluentd-address: 127.0.0.1:24224
+        tag: nginx.access
+    depends_on:
+      - dd-agent
+    labels:
+      com.datadoghq.ad.check_names: '["nginx"]'
+      com.datadoghq.ad.init_configs: '[{}]'
+      com.datadoghq.ad.instances: '[{"nginx_status_url": "http://%%host%%:81/nginx_status"}]'
+      com.datadoghq.ad.logs: '[{"source": "nginx", "service": "web"}]'
+
+  #datadog container settings
+  dd-agent:
+    container_name: dd-agent
+    image: datadog/agent:7
+    environment:
+      - DD_API_KEY=DD_API_KEY
+      - DD_APM_ENABLED=true
+      - DD_LOGS_ENABLED=true
+      - DD_LOGS_CONFIG_CONTAINER_COLLECT_ALL=true
+      - DD_AC_EXCLUDE="name:dd-agent"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /proc/:/host/proc/:ro
+      - /sys/fs/cgroup:/host/sys/fs/cgroup:ro
+    ports:
+      - '8126:8126/tcp'
+
+  fluentd-logs:
+    build: ./fluentd-logs
+    volumes:
+      - ./fluentd-logs/conf:/fluentd/etc
+    ports:
+      - 24224:24224
+      - 24224:24224/udp
+    links:
+      - elasticsearch
+    networks:
+      - back
+
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.2.0
+    environment:
+      - discovery.type=single-node
+    expose:
+      - 9200
+    ports:
+      - 9200:9200
+    networks:
+      - back
+
+  kibana:
+    image: kibana:7.2.0
+    ports:
+      - 5601:5601
+    links:
+      - elasticsearch
+    networks:
+      - back

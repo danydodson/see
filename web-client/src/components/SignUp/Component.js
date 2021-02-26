@@ -14,7 +14,6 @@ import {
 export default function SignUpForm(props) {
   const classes = useStyles()
   let history = useHistory()
-
   // const { state, actions } = useStore()
 
   const handleSubmit = async ({ email, username, password }) => {
@@ -23,8 +22,8 @@ export default function SignUpForm(props) {
       username: username,
       password: password
     }
-    const response = await axios.post('/users/signup', payload)
-    history.push('/users/signin')
+    const response = await axios.post('/signup', payload)
+    history.push('/signin')
   }
 
 

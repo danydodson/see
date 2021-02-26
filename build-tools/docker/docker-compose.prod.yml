@@ -1,0 +1,21 @@
+version: '3.8'
+services:
+
+  nginx-proxy:
+    restart: always
+    image: ${HOST}/${REPO}/nginx-proxy:${TAG}
+    ports:
+      - 80:80
+    networks:
+      - back
+    depends_on:
+      - users-service
+
+  users-service:
+    restart: always
+    image: ghcr.io/${REPO}/users-service:${TAG}
+    networks:
+      - back
+
+networks:
+  back:

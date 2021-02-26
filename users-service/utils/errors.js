@@ -1,5 +1,5 @@
 
-exports.errorHandler = (err, req, res, next) => {
+const handler = (err, req, res, next) => {
 
   if (typeof (err) === 'string') {
     // custom application error
@@ -20,3 +20,5 @@ exports.errorHandler = (err, req, res, next) => {
   return res.status(500).json({ message: err.message })
 
 }
+
+module.exports = { handler }
